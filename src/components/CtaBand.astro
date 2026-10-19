@@ -1,0 +1,53 @@
+---
+import Button from './Button.astro';
+import Parts from './Parts.astro';
+import type { Part } from '../data/content.en';
+interface Props {
+  title: Part[];
+  text: string;
+  button: string;
+  href?: string;
+}
+const { title, text, button, href = '/#contact' } = Astro.props;
+---
+
+<div class="band">
+  <div class="copy">
+    <h2><Parts parts={title} /></h2>
+    <p>{text}</p>
+  </div>
+  <Button {href} arrow>{button}</Button>
+</div>
+
+<style>
+  .band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+    padding: clamp(28px, 5vw, 56px);
+    border-radius: var(--radius-band);
+    background: var(--color-petrol);
+    color: var(--color-on-dark);
+  }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  p {
+    color: var(--color-on-dark-body);
+  }
+  .band :global(a:focus-visible) {
+    outline-color: var(--color-accent);
+  }
+</style>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coach Fuai — Style guide</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=Figtree:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 100%; background: #F3F1EC; color: #15232B; font-family: 'Figtree', 'Segoe UI', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
+<div style="max-width: 1280px; margin: 0 auto; padding: 72px 32px 112px; box-sizing: border-box; display: flex; flex-direction: column; gap: 104px">
+
+  <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid #DCD8CF">
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="display: flex; align-items: center; gap: 12px">
+        <img src="/_blob/a9de7ebad9dfadfac0c04e3a74108bd4" alt="" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Coach Fuai · Momentum Coaching</span>
+      </span>
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 88px; line-height: 0.98; letter-spacing: -0.025em">Style <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">guide</span></h1>
+    </div>
+    <p style="margin: 0; max-width: 460px; color: #3D4A50">The building blocks behind the website: colours, type, buttons — and seven accent colours to choose from instead of the lime.</p>
+  </header>
+
+  <section style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Round 2 · Accent shortlist</span>
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em">A harder blue — or <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">apricot?</span></h2>
+      </div>
+      <p style="margin: 0; max-width: 460px; color: #3D4A50">The sky blue gets lost because the petrol and the greys are blue too. Here are two harder blues and apricot, each on the three backgrounds the site uses.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px">
+      <sc-for list="{{shortlist}}" as="s" hint-placeholder-count="3">
+        <div style="display: flex; flex-direction: column; border-radius: 28px; overflow: hidden; background: #FFFFFF; border: 1px solid #DCD8CF">
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #4F5B60">{{s.tag}}</span>
+              <span style="padding: 6px 12px; border-radius: 999px; border: 1px solid #17323F; background: {{s.verdictBg}}; color: {{s.verdictFg}}; font-size: 13px; font-weight: 600">{{s.verdict}}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px">
+              <span style="flex: none; width: 48px; height: 48px; border-radius: 50%; background: {{s.hex}}"></span>
+              <span style="display: flex; flex-direction: column; line-height: 1.2"><span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 28px">{{s.name}}</span><span style="font-size: 14px; color: #4F5B60">{{s.hex}}</span></span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; background: #F3F1EC">
+            <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 32px; line-height: 1.05; letter-spacing: -0.02em">Feel <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; background: {{s.hex}}; color: {{s.on}}; padding: 0 0.12em; border-radius: 0.12em">amazing.</span></span>
+            <span style="align-self: flex-start; display: flex; align-items: center; gap: 8px; min-height: 48px; box-sizing: border-box; padding: 12px 22px; border-radius: 999px; background: {{s.hex}}; color: {{s.on}}; font-weight: 600; font-size: 15px">Book a free intro
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; background: #17323F; color: #FFFFFF">
+            <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 48px; line-height: 1; color: {{s.hex}}">04</span>
+            <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.1">Let's build your <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: {{s.hex}}">momentum.</span></span>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+              <span style="display: flex; align-items: center; gap: 8px; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{s.hex}}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Nutrition guidance</span>
+              <span style="display: flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 10px 20px; border-radius: 999px; background: {{s.hex}}; color: {{s.on}}; font-weight: 600; font-size: 14px">Start now</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid #DCD8CF">
+            <span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: {{s.hex}}; color: {{s.on}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 14.5 7 22l5-3 5 3-1.5-7.5"></path></svg></span>
+            <span style="display: flex; flex-direction: column; line-height: 1.35"><span style="font-weight: 600">[Certification name]</span><span style="font-size: 14px; color: #4F5B60">On a white card</span></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px">
+            <p style="margin: 0; font-size: 15px; color: #3D4A50">{{s.why}}</p>
+            <span style="font-size: 13px; color: #4F5B60">{{s.ratios}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">01 · Core colours</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em">These stay the same, whatever accent you pick</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px">
+      <sc-for list="{{core}}" as="c" hint-placeholder-count="8">
+        <div style="display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: #FFFFFF; border: 1px solid #DCD8CF">
+          <div style="height: 120px; background: {{c.hex}}; border-bottom: 1px solid #DCD8CF"></div>
+          <div style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px">
+            <span style="font-weight: 600">{{c.name}}</span>
+            <span style="font-size: 14px; color: #4F5B60">{{c.hex}} · {{c.role}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">02 · Typography</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em">Three typefaces, each with one job</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Headings</span>
+        <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 72px; line-height: 1; letter-spacing: -0.02em">Aa</span>
+        <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 22px">Bricolage Grotesque · Semibold</span>
+        <p style="margin: 0; font-size: 15px; color: #3D4A50">Friendly and a bit characterful. H1 96 px, H2 54 px, H3 22–30 px, tight letter-spacing.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Personal accents</span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 72px; line-height: 1">Fuai</span>
+        <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 26px">Instrument Serif · Italic</span>
+        <p style="margin: 0; font-size: 15px; color: #3D4A50">Only for one or two words per heading: her name, better, stronger, amazing, momentum. Never full sentences.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 20px; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Body &amp; UI</span>
+        <span style="font-family: 'Figtree', 'Segoe UI', sans-serif; font-weight: 500; font-size: 72px; line-height: 1">Aa</span>
+        <span style="font-family: 'Figtree', 'Segoe UI', sans-serif; font-weight: 600; font-size: 22px">Figtree · Regular / Semibold</span>
+        <p style="margin: 0; font-size: 15px; color: #3D4A50">Clear and easy to read. Body 17–19 px, labels 13 px in capitals with wide spacing.</p>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 40px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Together</span>
+      <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 64px; line-height: 1; letter-spacing: -0.025em">Move <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">better.</span> Get <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">stronger.</span></span>
+      <p style="margin: 0; max-width: 620px; font-size: 19px; color: #3D4A50">Personal coaching for every body. I design programs that grow with you.</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+      <div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">03 · Accent colour options</span>
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em">Alternatives to the <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400">lime</span></h2>
+      </div>
+      <p style="margin: 0; max-width: 440px; color: #3D4A50">Each one shown the way it's used on the site: highlight word and button on the light background, and on the dark petrol band. All pass accessibility contrast with dark text.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px">
+      <sc-for list="{{accents}}" as="a" hint-placeholder-count="7">
+        <div style="display: flex; flex-direction: column; border-radius: 28px; overflow: hidden; background: #FFFFFF; border: 1px solid #DCD8CF">
+          <div style="min-height: 140px; box-sizing: border-box; padding: 22px 24px; background: {{a.hex}}; display: flex; flex-direction: column; justify-content: space-between; gap: 16px">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+              <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #15232B">{{a.tag}}</span>
+              <sc-if value="{{a.recommended}}" hint-placeholder-val="{{ false }}">
+                <span style="padding: 6px 12px; border-radius: 999px; background: #17323F; color: #FFFFFF; font-size: 13px; font-weight: 600">Chosen</span>
+              </sc-if>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: #15232B">
+              <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 30px; line-height: 1">{{a.name}}</span>
+              <span style="font-size: 15px; font-weight: 600">{{a.hex}}</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 18px; padding: 24px">
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <span style="font-weight: 600">{{a.mood}}</span>
+              <p style="margin: 0; font-size: 15px; color: #3D4A50">{{a.why}}</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 16px; background: #F3F1EC">
+              <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 30px; line-height: 1.05; letter-spacing: -0.02em">Feel <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; background: {{a.hex}}; padding: 0 0.12em; border-radius: 0.12em">amazing.</span></span>
+              <span style="align-self: flex-start; display: flex; align-items: center; gap: 8px; min-height: 44px; box-sizing: border-box; padding: 10px 20px; border-radius: 999px; background: {{a.hex}}; color: #15232B; font-weight: 600; font-size: 15px">Book a free intro
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px; padding: 20px; border-radius: 16px; background: #17323F; color: #FFFFFF">
+              <span style="font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.1">Let's build your <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: {{a.hex}}">momentum.</span></span>
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+                <span style="display: flex; align-items: center; gap: 8px; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{a.hex}}"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Nutrition guidance</span>
+                <span style="display: flex; align-items: center; min-height: 40px; box-sizing: border-box; padding: 8px 18px; border-radius: 999px; background: {{a.hex}}; color: #15232B; font-weight: 600; font-size: 14px">Start now</span>
+              </div>
+            </div>
+            <span style="font-size: 13px; color: #4F5B60">Dark text on it {{a.ink}} · on petrol {{a.petrol}} (min. 4.5:1)</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 20px">
+    <div style="display: flex; flex-direction: column; gap: 18px; padding: 36px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">04 · Accent — use it for</span>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17323F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>The main button: "Book a free intro"</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17323F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>One highlighted word in a big heading</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17323F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Icons, numbers and words on the dark petrol background</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17323F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Always with dark Ink text (#15232B) on top</li>
+      </ul>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 18px; padding: 36px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">Accent — avoid</span>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A3B2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 6l12 12M18 6 6 18"></path></svg>As text colour on the light background — too little contrast to read</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A3B2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 6l12 12M18 6 6 18"></path></svg>Large background areas or whole sections</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A3B2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 6l12 12M18 6 6 18"></path></svg>White text on the accent</li>
+        <li style="display: flex; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8A3B2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M6 6l12 12M18 6 6 18"></path></svg>Mixing two accent colours on one page</li>
+      </ul>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 32px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #4F5B60">05 · Buttons &amp; tags</span>
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'Segoe UI', sans-serif; font-weight: 600; font-size: 44px; line-height: 1.05; letter-spacing: -0.02em">Fully rounded, at least 44 px tall</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #DCD8CF">
+        <span style="display: flex; align-items: center; gap: 10px; min-height: 52px; box-sizing: border-box; padding: 14px 26px; border-radius: 999px; background: {{accent}}; color: #15232B; font-weight: 600">Primary
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+        <span style="display: flex; align-items: center; min-height: 52px; box-sizing: border-box; padding: 14px 26px; border-radius: 999px; border: 1.5px solid #15232B; font-weight: 600">Secondary</span>
+        <span style="display: flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 10px 20px; border-radius: 999px; background: #17323F; color: #FFFFFF; font-weight: 600; font-size: 15px">Header button</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 32px; border-radius: 24px; background: #17323F">
+        <span style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #15232B; font-size: 13px; font-weight: 600">1-1</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #15232B; font-size: 13px; font-weight: 600">Hybrid</span>
+        <span style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #15232B; font-size: 13px; font-weight: 600">Online</span>
+        <span style="display: flex; align-items: center; min-height: 52px; box-sizing: border-box; padding: 14px 26px; border-radius: 999px; background: {{accent}}; color: #15232B; font-weight: 600">Primary on dark</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#35B6FF","options":["#35B6FF","#A9D2EC","#F5A673","#D4E86E"]},"$preview":{"width":1440,"height":6500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#35B6FF',
+      core: [
+        { name: 'Ground', hex: '#F3F1EC', role: 'page background' },
+        { name: 'Surface', hex: '#FFFFFF', role: 'cards, white bands' },
+        { name: 'Line', hex: '#DCD8CF', role: 'borders, dividers' },
+        { name: 'Petrol', hex: '#17323F', role: 'dark bands, header button' },
+        { name: 'Ink', hex: '#15232B', role: 'headings, text on accent' },
+        { name: 'Body text', hex: '#3D4A50', role: 'paragraphs' },
+        { name: 'Muted', hex: '#4F5B60', role: 'labels, captions' }
+      ],
+      shortlist: [
+        { tag: 'Harder blue · neon', name: 'Neon azure', hex: '#35B6FF', on: '#15232B', verdict: 'Chosen', verdictBg: '#17323F', verdictFg: '#FFFFFF', why: 'Pops far more than the sky blue and still takes dark text. But it is still blue: next to the petrol and the blue-grey text it reads as more of the same, just louder — and neon nudges towards the loud gym look she wants to avoid.', ratios: 'Dark text on it 7.1:1 · on petrol 5.9:1' },
+        { tag: 'Harder blue · cobalt', name: 'Cobalt', hex: '#2563EB', on: '#FFFFFF', verdict: 'Doesn’t fit', verdictBg: '#FFFFFF', verdictFg: '#15232B', why: 'Strong on the light background, but on the petrol bands it almost disappears, and buttons need white text. It fights the dark colour instead of contrasting with it.', ratios: 'White text on it 5.2:1 · on petrol 2.6:1 (fails)' },
+        { tag: 'Warm opposite', name: 'Apricot', hex: '#F5A673', on: '#15232B', verdict: 'Runner-up', verdictBg: '#FFFFFF', verdictFg: '#15232B', why: 'Sits opposite blue on the colour wheel, so it stands out against the petrol and the cool greys everywhere. Warm, welcoming, gender-neutral, and it belongs with the warm off-white background.', ratios: 'Dark text on it 8.1:1 · on petrol 6.8:1' }
+      ],
+      accents: [
+        { tag: 'Option A · Brand link', name: 'Sky blue', hex: '#A9D2EC', recommended: false, mood: 'Calm, trustworthy, connected', why: 'Ties straight back to the blue on her flyer and business cards, so print and web feel like one brand. Soft, gender-neutral and still clearly "active".', ink: '10.0:1', petrol: '8.4:1' },
+        { tag: 'Option B · Warmest', name: 'Apricot', hex: '#F4B98A', recommended: false, mood: 'Warm, welcoming, personal', why: 'The friendliest choice. Feels approachable for beginners and pairs naturally with the warm off-white background. Strong runner-up.', ink: '9.3:1', petrol: '7.8:1' },
+        { tag: 'Option C · Distinctive', name: 'Lilac', hex: '#C9B8EC', recommended: false, mood: 'Modern, fresh, stand-out', why: 'Rare in fitness, so it sets her apart from other trainers in Leuven. A bit more lifestyle than sport.', ink: '8.8:1', petrol: '7.4:1' },
+        { tag: 'Option D · Wellness', name: 'Sage mint', hex: '#B5DCC4', recommended: false, mood: 'Calm, healthy, balanced', why: 'Leans towards mobility and wellbeing rather than performance. The softest option, so buttons pull a little less attention.', ink: '10.7:1', petrol: '8.9:1' },
+        { tag: 'Option E · Sunny', name: 'Honey', hex: '#E8C468', recommended: false, mood: 'Optimistic, bright, energetic', why: 'Sunny energy without going neon. A good fit if "Feel amazing" should be the main feeling of the site.', ink: '9.6:1', petrol: '8.0:1' },
+        { tag: 'Option F · Boldest', name: 'Coral', hex: '#EE9A7E', recommended: false, mood: 'Lively, bold, motivating', why: 'The strongest pull towards the booking button. Still soft, but the most attention-grabbing of the set.', ink: '7.3:1', petrol: '6.1:1' },
+        { tag: 'Current', name: 'Lime', hex: '#D4E86E', recommended: false, mood: 'Fresh, sporty, high energy', why: 'The most "gym" of all options and very on-trend. Also the one closest to the loud fitness look she wants to avoid.', ink: '11.9:1', petrol: '10.0:1' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

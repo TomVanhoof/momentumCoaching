@@ -1,0 +1,60 @@
+---
+// Striped stand-in until real photos exist. Swap for <Image /> when they arrive.
+// Slot content is positioned over the box (badges, cards).
+interface Props {
+  label: string;
+  minHeight?: number;
+  labelWidth?: number;
+  variant?: 'light' | 'dark';
+  /** Compact version used inside cards */
+  small?: boolean;
+}
+const { label, minHeight = 560, labelWidth = 260, variant = 'light', small = false } = Astro.props;
+---
+
+<div
+  class:list={['photo', variant, { small }]}
+  style={`--min-h: ${minHeight}px`}
+  role="img"
+  aria-label={label}
+>
+  <span class="caption" style={`max-width: ${labelWidth}px`}>{label}</span>
+  <slot />
+</div>
+
+<style>
+  .photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: var(--min-h);
+    border-radius: var(--radius-photo);
+    background: var(--placeholder-stripes);
+  }
+  .dark {
+    background: repeating-linear-gradient(135deg, #24434f 0 16px, #2a4b58 16px 32px);
+  }
+  .caption {
+    padding: 24px;
+    font-size: 14px;
+    color: #3e4a4f;
+    text-align: center;
+  }
+  .dark .caption {
+    color: var(--color-on-dark-body);
+  }
+  .small {
+    border-radius: 18px;
+  }
+  .small .caption {
+    padding: 16px;
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    .photo:not(.small) {
+      min-height: min(var(--min-h), 420px);
+    }
+  }
+</style>

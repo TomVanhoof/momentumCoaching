@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Parts from '../components/Parts.astro';
+import PackageCard from '../components/PackageCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { packagesPage as p } from '../data/content.en';
+---
+
+<BaseLayout title={p.title} description={p.description}>
+  <section class="container head">
+    <span class="label">{p.eyebrow}</span>
+    <h1><Parts parts={p.heading} /></h1>
+    <p>{p.intro}</p>
+  </section>
+
+  <section class="container cards">
+    <div class="grid">
+      {p.items.map((item) => <PackageCard {...item} level="h2" bestForLabel={p.bestFor} />)}
+    </div>
+  </section>
+
+  <section class="band-white" aria-labelledby="compare-heading">
+    <div class="container compare">
+      <h2 class="h2" id="compare-heading"><Parts parts={p.compare.title} /></h2>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="compare-heading">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Feature</span></th>
+              {p.compare.columns.map((c) => <th scope="col">{c}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {p.compare.rows.map((row) => (
+              <tr class:list={{ emphasis: row.emphasis }}>
+                <th scope="row">{row.label}</th>
+                {row.values.map((v) => <td class:list={{ dash: v === '—' }}>{v}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section start">
+    <div class="start-head">
+      <span class="label">{p.steps.eyebrow}</span>
+      <h2 class="h2"><Parts parts={p.steps.title} /></h2>
+    </div>
+    <ol class="steps">
+      {p.steps.items.map((s, i) => (
+        <li>
+          <span class="num accent" aria-hidden="true">{i + 1}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+    <CtaBand {...p.cta} />
+  </section>
+</BaseLayout>
+
+<style>
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    padding-block: 56px 64px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(46px, 5.6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .head p {
+    max-width: 600px;
+    font-size: var(--text-lead);
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+
+  .cards {
+    padding-bottom: 104px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .compare {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-block: 104px;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 20px;
+    border: 1px solid var(--color-line);
+  }
+  table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    font-size: 16px;
+    text-align: left;
+  }
+  thead tr {
+    background: var(--color-ground);
+  }
+  th,
+  td {
+    padding: 18px 24px;
+  }
+  thead th {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+  }
+  tbody tr {
+    border-top: 1px solid var(--color-line);
+  }
+  tbody th {
+    font-weight: 500;
+  }
+  .dash {
+    color: var(--color-muted);
+  }
+  .emphasis {
+    background: var(--color-ground);
+  }
+  .emphasis th,
+  .emphasis td {
+    font-weight: 600;
+  }
+
+  .start {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .start-head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 640px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 20px;
+  }
+  .steps li {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+    border-top: 3px solid var(--color-petrol);
+  }
+  .num {
+    font-size: 44px;
+    line-height: 1;
+    color: var(--color-petrol);
+  }
+  .steps h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h3);
+  }
+  .steps p {
+    font-size: 16px;
+    color: var(--color-body);
+  }
+
+  @media (max-width: 600px) {
+    .cards {
+      padding-bottom: 64px;
+    }
+    .compare {
+      padding-block: 64px;
+    }
+  }
+</style>

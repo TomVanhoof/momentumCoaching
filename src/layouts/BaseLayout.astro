@@ -1,0 +1,86 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/figtree';
+import '@fontsource/instrument-serif/latin-400.css';
+import '@fontsource/instrument-serif/latin-400-italic.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import { site, addressLine } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const origin = new URL('/', Astro.site).href;
+
+// Leave the street number out of structured data until it is confirmed
+const streetAddress = site.address.number.startsWith('[')
+  ? site.address.street
+  : `${site.address.street} ${site.address.number}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${origin}#fuai`,
+      name: 'Fuai',
+      jobTitle: 'Personal trainer',
+      email: site.email,
+      telephone: '+32456560702',
+      worksFor: { '@id': `${origin}#business` },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${origin}#business`,
+      name: `${site.company} — ${site.name}`,
+      description: 'Personal trainer in Leuven offering 1-1, hybrid and online coaching.',
+      url: origin,
+      email: site.email,
+      telephone: '+32456560702',
+      founder: { '@id': `${origin}#fuai` },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress,
+        postalCode: site.address.postalCode,
+        addressLocality: site.address.city,
+        addressCountry: 'BE',
+      },
+      areaServed: site.address.city,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#F3F1EC" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

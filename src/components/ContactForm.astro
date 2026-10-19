@@ -1,0 +1,159 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import { en as t } from '../data/content.en';
+
+const f = t.contact.form;
+// Without an endpoint the form falls back to the visitor's mail client.
+const action = site.form.endpoint || `mailto:${site.email}`;
+const fallbackMail = !site.form.endpoint;
+---
+
+<form
+  class="form"
+  method="post"
+  action={action}
+  enctype={fallbackMail ? 'text/plain' : undefined}
+  data-form
+  data-success={f.success}
+  data-error={f.error}
+  data-sending={f.sending}
+>
+  {site.form.accessKey && <input type="hidden" name="access_key" value={site.form.accessKey} />}
+  <input type="hidden" name="subject" value="New intro request — Momentum Coaching" />
+
+  <div class="row">
+    <label>{f.name}
+      <input type="text" name="name" placeholder={f.namePlaceholder} autocomplete="name" required />
+    </label>
+    <label>{f.email}
+      <input type="email" name="email" placeholder={f.emailPlaceholder} autocomplete="email" required />
+    </label>
+  </div>
+
+  <label>{f.goal}
+    <select name="goal">{f.goals.map((g) => <option>{g}</option>)}</select>
+  </label>
+
+  <label>{f.package}
+    <select name="package">{f.packages.map((p) => <option>{p}</option>)}</select>
+  </label>
+
+  <label>{f.message}
+    <textarea name="message" rows="3" placeholder={f.messagePlaceholder}></textarea>
+  </label>
+
+  <!-- Honeypot: hidden from people, bots fill it in -->
+  <div class="hp" aria-hidden="true">
+    <label>Leave this empty
+      <input type="text" name={site.form.honeypot} tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn--primary btn--lg btn--block" data-submit>
+    <span data-submit-label>{f.submit}</span>
+    <Icon name="arrow" />
+  </button>
+
+  <p class="status" role="status" aria-live="polite" data-status></p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-form]');
+  const endpoint = form?.getAttribute('action') ?? '';
+
+  // Only enhance when a real HTTP endpoint is configured (not the mailto fallback)
+  if (form && /^https?:/.test(endpoint)) {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const button = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const label = form.querySelector<HTMLElement>('[data-submit-label]')!;
+    const original = label.textContent ?? '';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      status.dataset.state = '';
+      button.disabled = true;
+      label.textContent = form.dataset.sending ?? '';
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        status.dataset.state = 'success';
+        status.textContent = form.dataset.success ?? '';
+      } catch {
+        status.dataset.state = 'error';
+        status.textContent = form.dataset.error ?? '';
+      } finally {
+        button.disabled = false;
+        label.textContent = original;
+      }
+    });
+  }
+</script>
+
+<style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 16px;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 12px;
+    background: var(--color-field);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::placeholder {
+    color: var(--color-placeholder);
+  }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  button[disabled] {
+    opacity: 0.7;
+    cursor: progress;
+  }
+  .status {
+    font-size: var(--text-small);
+    font-weight: 600;
+  }
+  .status:empty {
+    display: none;
+  }
+  .status[data-state='error'] {
+    color: #a1281f;
+  }
+</style>

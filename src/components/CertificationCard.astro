@@ -1,0 +1,61 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  name: string;
+  institution: string;
+  year: string;
+  meaning: string;
+}
+const { name, institution, year, meaning } = Astro.props;
+---
+
+<li class="cert">
+  <span class="icon"><Icon name="award" size={26} /></span>
+  <div class="text">
+    <h3>{name}</h3>
+    <span class="meta">{institution} · {year}</span>
+    <span class="meaning">{meaning}</span>
+  </div>
+</li>
+
+<style>
+  .cert {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+  .icon {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+  }
+  .meta {
+    font-size: var(--text-small);
+    color: var(--color-muted);
+  }
+  .meaning {
+    margin-top: 6px;
+    font-size: var(--text-small);
+    color: var(--color-body);
+  }
+</style>

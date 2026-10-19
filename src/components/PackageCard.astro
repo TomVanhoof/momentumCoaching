@@ -1,0 +1,159 @@
+---
+import Icon from './Icon.astro';
+import PhotoPlaceholder from './PhotoPlaceholder.astro';
+interface Props {
+  name: string;
+  blurb: string;
+  price: string;
+  unit: string;
+  features: string[];
+  cta: string;
+  featured?: boolean;
+  href?: string;
+  /** Heading level, so /packages (h1 above) can use h2 */
+  level?: 'h2' | 'h3';
+  /** Extra detail used on /packages */
+  photoLabel?: string;
+  bestFor?: string;
+  bestForLabel?: string;
+  terms?: string;
+}
+const {
+  name,
+  blurb,
+  price,
+  unit,
+  features,
+  cta,
+  featured = false,
+  href = '/#contact',
+  level: Heading = 'h3',
+  photoLabel,
+  bestFor,
+  bestForLabel = 'Best for:',
+  terms,
+} = Astro.props;
+const detailed = Boolean(photoLabel || bestFor || terms);
+---
+
+<article class:list={['card', { featured, detailed }]}>
+  {photoLabel && <PhotoPlaceholder label={photoLabel} minHeight={180} labelWidth={240} variant={featured ? 'dark' : 'light'} small />}
+  <div class="top">
+    <Heading>{name}</Heading>
+    <p class="blurb">{blurb}</p>
+  </div>
+  {bestFor && <p class="best"><strong>{bestForLabel}</strong> {bestFor}</p>}
+  <div class="price-block">
+    <p class="price">
+      <span class="amount">{price}</span>
+      <span class="unit">{unit}</span>
+    </p>
+    {terms && <p class="terms">{terms}</p>}
+  </div>
+  <ul>
+    {features.map((f) => (
+      <li><Icon name="check" size={20} stroke={2.2} class="tick" />{f}</li>
+    ))}
+  </ul>
+  <a {href} class:list={['btn', 'btn--lg', 'btn--block', featured ? 'btn--primary' : 'btn--outline']}>{cta}</a>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 36px;
+    border-radius: var(--radius-card-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+  .detailed {
+    gap: 22px;
+  }
+  .featured {
+    background: var(--color-petrol);
+    border-color: var(--color-petrol);
+    color: var(--color-on-dark);
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .top :global(h2),
+  .top :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+  }
+  .detailed .top :global(h2) {
+    font-size: 30px;
+  }
+  .blurb {
+    font-size: 16px;
+    color: var(--color-body);
+  }
+  .featured .blurb {
+    color: var(--color-on-dark-body);
+  }
+  .best {
+    font-size: var(--text-small);
+  }
+  .detailed .price-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-block: 18px;
+    border-block: 1px solid var(--color-line);
+  }
+  .featured.detailed .price-block {
+    border-color: #3a5562;
+  }
+  /* Keep the amount on one line; the unit may wrap underneath */
+  .price {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 8px;
+  }
+  .amount {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .unit,
+  .terms {
+    font-size: 15px;
+    color: var(--color-muted);
+  }
+  .terms {
+    font-size: 14px;
+  }
+  .featured .unit,
+  .featured .terms {
+    color: #c3cfd4;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+  }
+  li {
+    display: flex;
+    gap: 10px;
+  }
+  .tick {
+    flex: none;
+    margin-top: 2px;
+    color: var(--color-petrol);
+  }
+  .featured .tick {
+    color: var(--color-accent);
+  }
+  .btn {
+    margin-top: auto;
+  }
+</style>

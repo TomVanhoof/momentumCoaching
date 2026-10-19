@@ -1,0 +1,14 @@
+---
+import type { Part } from '../data/content.en';
+interface Props {
+  parts: Part[];
+}
+const { parts } = Astro.props;
+---
+
+{parts.map((p) =>
+  typeof p === 'string' ? p
+  : 'br' in p ? <br />
+  : 'hl' in p ? <span class="accent accent--highlight">{p.hl}</span>
+  : <span class:list={['accent', { 'accent--on-dark': p.onDark }]}>{p.em}</span>
+)}

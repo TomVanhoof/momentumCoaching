@@ -1,0 +1,23 @@
+---
+// Inlined so the colour follows the surrounding text colour (ink on light, white on petrol).
+import raw from '../assets/logo.svg?raw';
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+const svg = raw
+  .replace(/fill="black"/g, 'fill="currentColor"')
+  .replace('<svg ', '<svg role="img" aria-label="Momentum Coaching" ');
+---
+
+<span class:list={['logo', className]} set:html={svg} />
+
+<style>
+  .logo {
+    display: inline-flex;
+  }
+  .logo :global(svg) {
+    width: 120px;
+    height: auto;
+  }
+</style>

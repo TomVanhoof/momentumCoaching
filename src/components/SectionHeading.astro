@@ -1,0 +1,30 @@
+---
+import Parts from './Parts.astro';
+import type { Part } from '../data/content.en';
+interface Props {
+  eyebrow?: string;
+  title: Part[];
+  center?: boolean;
+  as?: 'h1' | 'h2';
+}
+const { eyebrow, title, center = false, as: Tag = 'h2' } = Astro.props;
+---
+
+<div class:list={['heading', { center }]}>
+  {eyebrow && <span class="label">{eyebrow}</span>}
+  <Tag class="h2"><Parts parts={title} /></Tag>
+  <slot />
+</div>
+
+<style>
+  .heading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .heading.center {
+    align-items: center;
+    text-align: center;
+  }
+</style>

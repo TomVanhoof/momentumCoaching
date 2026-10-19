@@ -1,0 +1,472 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Parts from '../components/Parts.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
+import StepCard from '../components/StepCard.astro';
+import PackageCard from '../components/PackageCard.astro';
+import Testimonial from '../components/Testimonial.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site, addressLine } from '../data/site';
+import { en as t } from '../data/content.en';
+
+const { hero, focus, coach, way, packages, testimonials, contact } = t;
+---
+
+<BaseLayout
+  title="Personal trainer Leuven — Coach Fuai · Momentum Coaching"
+  description="Personal trainer in Leuven at Basic-Fit Bondgenotenlaan. 1-1, hybrid and online coaching to help you move better, get stronger and feel amazing."
+>
+  <!-- Hero -->
+  <section class="container hero">
+    <div class="hero-copy">
+      <span class="pill">
+        <Icon name="pin" size={16} />
+        {hero.location}
+      </span>
+      <div class="hero-title">
+        <p class="greeting"><Parts parts={hero.greeting} /></p>
+        <h1><Parts parts={hero.title} /></h1>
+      </div>
+      <p class="intro">{hero.intro}</p>
+      <div class="ctas">
+        <Button href="#contact" arrow>{hero.primaryCta}</Button>
+        <Button href="/packages" variant="outline">{hero.secondaryCta}</Button>
+      </div>
+      <ul class="trust">
+        {hero.trust.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    <PhotoPlaceholder label={hero.photoLabel} minHeight={640} labelWidth={280}>
+      <a href="/about#certifications" class="cert-badge">
+        <Icon name="award" />
+        {hero.certBadge}
+      </a>
+      <div class="where">
+        <p>
+          <span class="where-label">{hero.trainWith}</span>
+          <span class="where-name">{site.address.venue}, {site.address.street}</span>
+        </p>
+        <ul class="modes">
+          {hero.modes.map((m) => <li>{m}</li>)}
+        </ul>
+      </div>
+    </PhotoPlaceholder>
+  </section>
+
+  <!-- Focus strip (dark) -->
+  <section class="band-dark" aria-label="Focus areas">
+    <div class="container focus">
+      <span class="label focus-label">{focus.label}</span>
+      <ul class="focus-items">
+        {focus.items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Meet your coach -->
+  <section id="about" class="container section coach">
+    <PhotoPlaceholder label={coach.photoLabel} minHeight={560} />
+    <div class="coach-copy">
+      <span class="label">{coach.eyebrow}</span>
+      <h2 class="h2"><Parts parts={coach.title} /></h2>
+      {coach.paragraphs.map((p) => <p class="lead-p">{p}</p>)}
+      <ul class="certs">
+        {t.certifications.slice(0, coach.certsShown).map((c) => (
+          <li>
+            <span class="cert-icon"><Icon name="award" size={20} /></span>
+            <span class="cert-text">
+              <span class="cert-name">{c.name}</span>
+              <span class="cert-meta">{c.institution} · {c.year}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <a href="/about" class="text-link">{coach.link}<Icon name="arrow" /></a>
+    </div>
+  </section>
+
+  <!-- Way of working (dark) -->
+  <section id="way" class="band-dark">
+    <div class="container section way">
+      <div class="way-head">
+        <SectionHeading eyebrow={way.eyebrow} title={way.title} />
+        <p class="way-intro">{way.intro}</p>
+      </div>
+      <ol class="steps">
+        {way.steps.map((s, i) => (
+          <StepCard number={String(i + 1).padStart(2, '0')} title={s.title} highlight={s.highlight}>{s.text}</StepCard>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="container section pkgs">
+    <SectionHeading eyebrow={packages.eyebrow} title={packages.title} center>
+      <p class="pkgs-intro">{packages.intro}</p>
+    </SectionHeading>
+    <div class="pkg-grid">
+      {packages.items.map((p) => <PackageCard {...p} cta={packages.cta} />)}
+    </div>
+    <a href="/packages" class="text-link compare">{packages.compareLink}<Icon name="arrow" /></a>
+  </section>
+
+  <!-- Testimonials (white band) -->
+  <section class="band-white" aria-labelledby="clients-heading">
+    <div class="container quotes">
+      <h2 class="h2" id="clients-heading"><Parts parts={testimonials.title} /></h2>
+      <div class="quote-grid">
+        {testimonials.items.map((q) => <Testimonial {...q} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container section contact-wrap">
+    <div class="contact on-dark">
+      <div class="contact-copy">
+        <h2><Parts parts={contact.title} /></h2>
+        <p class="contact-intro">{contact.intro}</p>
+        <ul class="contact-list">
+          <li>
+            <a href={site.phone.href}><Icon name="phone" size={20} />{site.phone.display}</a>
+          </li>
+          <li>
+            <a href={`mailto:${site.email}`}><Icon name="mail" size={20} />{site.email}</a>
+          </li>
+          <li>
+            {site.instagram.url ? (
+              <a href={site.instagram.url}><Icon name="instagram" size={20} />{site.instagram.handle}</a>
+            ) : (
+              <span><Icon name="instagram" size={20} />{site.instagram.handle}</span>
+            )}
+          </li>
+          <li>
+            <span><Icon name="pin" size={20} />{addressLine}</span>
+          </li>
+        </ul>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr));
+    gap: 48px;
+    align-items: center;
+    padding-block: 32px 56px;
+  }
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3a40;
+  }
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .greeting {
+    font-size: 22px;
+    font-weight: 500;
+    color: #2c3a40;
+  }
+  .greeting :global(.accent) {
+    font-size: 30px;
+    color: var(--color-ink);
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h1);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .intro {
+    max-width: 520px;
+    font-size: var(--text-lead);
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+  .cert-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: var(--tap-min);
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+    box-shadow: 0 6px 20px rgba(21, 35, 43, 0.1);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .where {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .where p {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+  }
+  .where-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+  .where-name {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .modes {
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .modes li {
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--color-petrol);
+    color: var(--color-on-dark);
+  }
+
+  /* Focus strip */
+  .focus {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding-block: 30px;
+  }
+  .focus-label {
+    color: var(--color-accent);
+  }
+  :global(.band-dark) .focus-label {
+    color: var(--color-accent);
+  }
+  .focus-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+  }
+
+  /* Meet your coach */
+  .coach {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
+    gap: 64px;
+    align-items: center;
+  }
+  .coach-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .lead-p {
+    font-size: 18px;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+  .certs {
+    width: 100%;
+    border-top: 1px solid var(--color-line);
+  }
+  .certs li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .cert-icon {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+  .cert-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+  }
+  .cert-name {
+    font-weight: 600;
+  }
+  .cert-meta {
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  /* Way of working */
+  .way {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .way-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .way-head :global(.heading) {
+    max-width: 640px;
+  }
+  .way-intro {
+    max-width: 400px;
+    color: var(--color-on-dark-body);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: 20px;
+  }
+
+  /* Packages */
+  .pkgs {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .pkgs-intro {
+    max-width: 560px;
+    color: var(--color-body);
+  }
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+  .compare {
+    align-self: center;
+  }
+
+  /* Testimonials */
+  .quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-block: 104px;
+  }
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    gap: 20px;
+  }
+  @media (max-width: 600px) {
+    .quotes {
+      padding-block: 64px;
+    }
+  }
+
+  /* Contact band */
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
+    gap: 48px;
+    padding: clamp(28px, 5vw, 64px);
+    border-radius: var(--radius-band);
+    background: var(--color-petrol);
+    color: var(--color-on-dark);
+  }
+  .contact-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .contact-copy h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 4.6vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .contact-intro {
+    max-width: 440px;
+    font-size: 18px;
+    color: var(--color-on-dark-body);
+  }
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 17px;
+  }
+  .contact-list a,
+  .contact-list span {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 48px;
+    text-decoration: none;
+  }
+  .contact-list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .contact-list :global(svg) {
+    flex: none;
+  }
+</style>

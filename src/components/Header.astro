@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.svg';
+import { site } from '../data/site';
+import { en as t } from '../data/content.en';
+---
+
+<header class="header">
+  <div class="container inner">
+    <a href="/" class="brand">
+      <Image src={logo} alt={site.company} width={110} height={21} class="logo" loading="eager" />
+    </a>
+
+    <button
+      type="button"
+      class="toggle"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      <span class="visually-hidden">Menu</span>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path class="bars" d="M4 7h16M4 12h16M4 17h16" />
+        <path class="cross" d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+
+    <div class="menu" id="site-menu" data-menu>
+      <nav aria-label="Main">
+        {t.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <a href="/#contact" class="btn btn--dark">{t.headerCta}</a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.documentElement.classList.add('js');
+</script>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean, returnFocus = false) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.classList.toggle('open', open);
+      if (open) menu.querySelector<HTMLElement>('a')?.focus();
+      else if (returnFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+    });
+
+    // Close after choosing a link, or when focus leaves the open menu
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('focusin', (e) => {
+      const target = e.target as Node;
+      if (toggle.getAttribute('aria-expanded') === 'true' && !menu.contains(target) && !toggle.contains(target)) {
+        setOpen(false);
+      }
+    });
+  }
+</script>
+
+<style>
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    padding-block: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: var(--tap-min);
+    text-decoration: none;
+  }
+  .brand :global(.logo) {
+    width: 165px;
+    height: auto;
+  }
+
+  .toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+  }
+  .cross,
+  .toggle[aria-expanded='true'] .bars {
+    display: none;
+  }
+  .toggle[aria-expanded='true'] .cross {
+    display: inline;
+  }
+
+  /* Desktop: nav and CTA sit in the header row directly */
+  .menu {
+    display: contents;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 28px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 860px) {
+    .toggle {
+      display: flex;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      width: 100%;
+    }
+    nav {
+      flex-direction: column;
+      gap: 0;
+    }
+    nav a {
+      border-bottom: 1px solid var(--color-line);
+    }
+    /* Without JS the menu stays open; with JS it is toggled */
+    :global(.js) .menu:not(.open) {
+      display: none;
+    }
+  }
+</style>

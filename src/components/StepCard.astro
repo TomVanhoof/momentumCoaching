@@ -1,0 +1,50 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  highlight?: boolean;
+}
+const { number, title, highlight = false } = Astro.props;
+---
+
+<li class:list={['step', { highlight }]}>
+  <span class="num accent" aria-hidden="true">{number}</span>
+  <h3>{title}</h3>
+  <p><slot /></p>
+</li>
+
+<style>
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px;
+    border-radius: var(--radius-card);
+    background: var(--color-petrol-card);
+  }
+  .num {
+    font-size: 48px;
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-h3);
+  }
+  p {
+    font-size: 16px;
+    color: var(--color-on-dark-body);
+  }
+  /* The one intentional large use of the accent */
+  .highlight {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+  .highlight .num {
+    color: var(--color-ink);
+  }
+  .highlight p {
+    color: #2c3a40;
+  }
+</style>
