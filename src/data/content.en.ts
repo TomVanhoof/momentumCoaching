@@ -20,7 +20,7 @@ export const en = {
     { label: 'Packages', href: '/packages' },
     { label: 'Contact', href: '/#contact' },
   ],
-  headerCta: 'Get in touch',
+  headerCta: 'Book an intro',
   footerNav: [
     { label: 'About me', href: '/about' },
     { label: 'Packages', href: '/packages' },
@@ -38,7 +38,7 @@ export const en = {
     ] as Part[],
     intro:
       "Personal coaching for every body. Whether you're new to the gym or chasing your next PR, I design programs that grow with you. Training, practical nutrition guidance and habits that actually stick.",
-    primaryCta: 'Get in touch',
+    primaryCta: 'Book an intro',
     secondaryCta: 'See packages',
     trust: ['Certified personal trainer', '8 years of training experience', 'In person, hybrid & online'],
     photoLabel:
@@ -93,8 +93,8 @@ export const en = {
     intro: 'No crash plans, no shouting. A clear, step-by-step approach that meets you where you are.',
     steps: [
       {
-        title: 'Free chat',
-        text: "Contact me for free, at the gym or online. We talk about your goals, your week and anything that's held you back before.",
+        title: 'Free intro',
+        text: "A relaxed chat at the gym or online. We talk about your goals, your week and anything that's held you back before.",
       },
       {
         title: 'Assessment',
@@ -115,8 +115,8 @@ export const en = {
   packages: {
     eyebrow: 'Packages',
     title: ['How do you want to ', { em: 'train?' }] as Part[],
-    intro: "Three ways to work together. Not sure which one fits? Contact me for free and we'll figure it out together. Your first session is half price.",
-    cta: 'Get in touch',
+    intro: "Three ways to work together. Not sure which one fits? We'll figure it out during your free intro.",
+    cta: 'Start with a free intro',
     compareLink: 'Compare packages in detail',
     items: [
       {
@@ -222,7 +222,7 @@ export const en = {
       packages: ['Help me choose', '1-1 coaching', 'Hybrid coaching', 'Online coaching'],
       message: 'Anything I should know?',
       messagePlaceholder: 'Your experience, schedule, questions…',
-      submit: 'Send my request',
+      submit: 'Request an intro',
       sending: 'Sending…',
       success: "Thanks! I've got your message and will get back to you soon.",
       error: 'Something went wrong. Please call or email me instead using the details on the left.',
@@ -281,19 +281,19 @@ export const aboutPage = {
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: 'Contact me for free to talk about what suits you. Your first session is half price.',
-    button: 'Get in touch',
+    text: 'Start with a free, no-pressure intro at the gym or online.',
+    button: 'Book a free intro',
   },
 };
 
 export const packagesPage = {
   title: 'Personal training packages Leuven: 1-1, hybrid & online | Coach Fuai',
   description:
-    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package comes with a plan made just for you, and your first session is half price.',
+    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package starts with a free intro and a plan made just for you.',
   eyebrow: 'Packages',
   heading: ['Coaching that fits ', { em: 'your week' }] as Part[],
   intro:
-    'Train side by side, mix it up, or train on your own with my guidance. Every package comes with a plan made just for you. Contact me for free to talk about what suits you, and get your first session at half price.',
+    'Train side by side, mix it up, or train on your own with my guidance. Every package starts with a free intro and a plan made just for you.',
   items: [
     {
       name: '1-1 coaching',
@@ -369,7 +369,7 @@ export const packagesPage = {
     items: [
       {
         q: 'Which package is right for me?',
-        a: "That depends on your goals, your experience and how much guidance you want. Not sure? Contact me for free: we talk it through and pick what fits.",
+        a: "That depends on your goals, your experience and how much guidance you want. Not sure? That's exactly what the free intro is for: we talk it through and pick what fits.",
       },
       {
         q: 'How long is a session?',
@@ -394,16 +394,16 @@ export const packagesPage = {
     eyebrow: 'Getting started',
     title: ['Three steps to your ', { em: 'first session' }] as Part[],
     items: [
-      { title: 'Get in touch', text: "Send a message or call, it's free. We'll talk through what suits you, at the gym or online." },
+      { title: 'Book a free intro', text: "Send a message or call. We'll find a moment to meet at the gym or online." },
       { title: 'Pick what fits', text: 'We choose the package that matches your goals, budget and schedule together.' },
-      { title: 'Start moving', text: 'Your assessment and first session at half price, then your personal program is ready to go.' },
+      { title: 'Start moving', text: 'Your assessment and first session, then your personal program is ready to go.' },
     ],
   },
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: "Not sure which package suits you? Contact me for free and we'll figure it out. Your first session is half price.",
-    button: 'Get in touch',
+    text: "Not sure which package suits you? That's exactly what the free intro is for.",
+    button: 'Book a free intro',
   },
 };
 
@@ -424,7 +424,7 @@ export const privacyPage = {
     },
     {
       title: 'Why and for how long',
-      text: '[Placeholder:to reply to your request and arrange your first session. Retention period: [X months].]',
+      text: '[Placeholder:to reply to your request and arrange your free intro. Retention period: [X months].]',
     },
     {
       title: 'Who receives it',
