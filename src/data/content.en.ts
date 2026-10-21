@@ -7,6 +7,12 @@ export type Part =
   | { hl: string }
   | { br: true };
 
+// Shown on every package card: commit for minMonths or more and get percent off
+export const commitDiscount = {
+  percent: 20,
+  text: 'with 6+ months',
+};
+
 export const en = {
   nav: [
     { label: 'About me', href: '/about' },
@@ -14,7 +20,7 @@ export const en = {
     { label: 'Packages', href: '/packages' },
     { label: 'Contact', href: '/#contact' },
   ],
-  headerCta: 'Book a free intro',
+  headerCta: 'Get in touch',
   footerNav: [
     { label: 'About me', href: '/about' },
     { label: 'Packages', href: '/packages' },
@@ -32,9 +38,9 @@ export const en = {
     ] as Part[],
     intro:
       "Personal coaching for every body. Whether you're new to the gym or chasing your next PR, I design programs that grow with you. Training, practical nutrition guidance and habits that actually stick.",
-    primaryCta: 'Book a free intro',
+    primaryCta: 'Get in touch',
     secondaryCta: 'See packages',
-    trust: ['Certified personal trainer', '[X] years coaching', 'In person, hybrid & online'],
+    trust: ['Certified personal trainer', '8 years of training experience', 'In person, hybrid & online'],
     photoLabel:
       'PHOTO:Fuai, natural light, mid-movement or smiling at the gym (portrait, at least 1600 px tall)',
     certBadge: 'View my certifications',
@@ -87,8 +93,8 @@ export const en = {
     intro: 'No crash plans, no shouting. A clear, step-by-step approach that meets you where you are.',
     steps: [
       {
-        title: 'Free intro',
-        text: "A relaxed chat at the gym or online. We talk about your goals, your week and anything that's held you back before.",
+        title: 'Free chat',
+        text: "Contact me for free, at the gym or online. We talk about your goals, your week and anything that's held you back before.",
       },
       {
         title: 'Assessment',
@@ -109,14 +115,14 @@ export const en = {
   packages: {
     eyebrow: 'Packages',
     title: ['How do you want to ', { em: 'train?' }] as Part[],
-    intro: "Three ways to work together. Not sure which one fits? We'll figure it out during your free intro.",
-    cta: 'Start with a free intro',
+    intro: "Three ways to work together. Not sure which one fits? Contact me for free and we'll figure it out together. Your first session is half price.",
+    cta: 'Get in touch',
     compareLink: 'Compare packages in detail',
     items: [
       {
         name: '1-1 coaching',
         blurb:
-          'Best for: beginners, people that need accountability or structure, want to improve technique, people that want full guidance.',
+          'Learn how to move better, get stronger and reach your goals. Together, every session, at Basic-Fit Leuven.',
         price: '€ 60',
         unit: '/ session',
         features: [
@@ -129,11 +135,11 @@ export const en = {
       {
         name: 'Hybrid coaching',
         blurb:
-          'A personalized monthly programme with 1-1 caoching in the first week to learn the program and perfect the technique, followed by three weeks of independent training.',
+          'Mix 1-1 sessions, online coaching and independent training. I guide you through a personalised program and perfect your technique.',
         price: '€ 150',
         unit: '/ month',
         features: [
-          '[X] 1-1 sessions per month',
+          '2 in person 1-1 sessions per month',
           'Program for your solo workouts',
           'Online check-ins & feedback',
           'Practical nutrition guidance',
@@ -204,7 +210,7 @@ export const en = {
   contact: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
     intro:
-      "Book a free intro, no strings attached. Tell me a little about your goals and I'll get back to you within 24 hours.",
+      "Contact me, and let's discuss your goals. Together we'll find the right coaching package for you, and get you started on your journey to move better, get stronger and feel amazing.",
     form: {
       name: 'Name',
       namePlaceholder: 'Your name',
@@ -216,7 +222,7 @@ export const en = {
       packages: ['Help me choose', '1-1 coaching', 'Hybrid coaching', 'Online coaching'],
       message: 'Anything I should know?',
       messagePlaceholder: 'Your experience, schedule, questions…',
-      submit: 'Request my free intro',
+      submit: 'Send my request',
       sending: 'Sending…',
       success: "Thanks! I've got your message and will get back to you soon.",
       error: 'Something went wrong. Please call or email me instead using the details on the left.',
@@ -275,28 +281,28 @@ export const aboutPage = {
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: 'Start with a free, no-pressure intro at the gym or online.',
-    button: 'Book a free intro',
+    text: 'Contact me for free to talk about what suits you. Your first session is half price.',
+    button: 'Get in touch',
   },
 };
 
 export const packagesPage = {
   title: 'Personal training packages Leuven: 1-1, hybrid & online | Coach Fuai',
   description:
-    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package starts with a free intro and a plan made just for you.',
+    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package comes with a plan made just for you, and your first session is half price.',
   eyebrow: 'Packages',
   heading: ['Coaching that fits ', { em: 'your week' }] as Part[],
   intro:
-    'Train side by side, mix it up, or train on your own with my guidance. Every package starts with a free intro and a plan made just for you.',
+    'Train side by side, mix it up, or train on your own with my guidance. Every package comes with a plan made just for you. Contact me for free to talk about what suits you, and get your first session at half price.',
   items: [
     {
       name: '1-1 coaching',
       blurb:
-        'Best for: beginners, people that need accountability or structure, want to improve technique, people that want full guidance.',
+        'Learn how to move better, get stronger and reach your goals. Together we work towards a better you, every session.',
       price: '€ 60',
       unit: '/ session',
       terms: '[Session packs: 5 or 10 sessions at € …]',
-      bestFor: 'beginners, anyone returning after a break, or people who want full guidance.',
+      bestFor: 'beginners, people that need accountability or structure, want to improvetechnique, people that want full guidance.',
       photoLabel: 'PHOTO:1-1 session on the gym floor',
       features: [
         '[60]-minute sessions at Basic-Fit Leuven',
@@ -309,7 +315,7 @@ export const packagesPage = {
     {
       name: 'Hybrid coaching',
       blurb:
-        'A personalized monthly programme with 1-1 caoching in the first week to learn the program and perfect the technique, followed by three weeks of independent training.',
+        'Mix 1-1 sessions, online coaching and independent training. I guide you through a personalised program and perfect your technique.',
       price: '€ 150',
       unit: '/ month',
       terms: '[Minimum term, e.g. 3 months]',
@@ -363,7 +369,7 @@ export const packagesPage = {
     items: [
       {
         q: 'Which package is right for me?',
-        a: "That depends on your goals, your experience and how much guidance you want. Not sure? That's exactly what the free intro is for: we talk it through and pick what fits.",
+        a: "That depends on your goals, your experience and how much guidance you want. Not sure? Contact me for free: we talk it through and pick what fits.",
       },
       {
         q: 'How long is a session?',
@@ -388,16 +394,16 @@ export const packagesPage = {
     eyebrow: 'Getting started',
     title: ['Three steps to your ', { em: 'first session' }] as Part[],
     items: [
-      { title: 'Book a free intro', text: "Send a message or call. We'll find a moment to meet at the gym or online." },
+      { title: 'Get in touch', text: "Send a message or call, it's free. We'll talk through what suits you, at the gym or online." },
       { title: 'Pick what fits', text: 'We choose the package that matches your goals, budget and schedule together.' },
-      { title: 'Start moving', text: 'Your assessment and first session, then your personal program is ready to go.' },
+      { title: 'Start moving', text: 'Your assessment and first session at half price, then your personal program is ready to go.' },
     ],
   },
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: "Not sure which package suits you? That's exactly what the free intro is for.",
-    button: 'Book a free intro',
+    text: "Not sure which package suits you? Contact me for free and we'll figure it out. Your first session is half price.",
+    button: 'Get in touch',
   },
 };
 
@@ -418,7 +424,7 @@ export const privacyPage = {
     },
     {
       title: 'Why and for how long',
-      text: '[Placeholder:to reply to your request and arrange your free intro. Retention period: [X months].]',
+      text: '[Placeholder:to reply to your request and arrange your first session. Retention period: [X months].]',
     },
     {
       title: 'Who receives it',

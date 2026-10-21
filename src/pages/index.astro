@@ -11,7 +11,7 @@ import Faq from '../components/Faq.astro';
 import Testimonial from '../components/Testimonial.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site, addressLine } from '../data/site';
-import { en as t } from '../data/content.en';
+import { en as t, commitDiscount } from '../data/content.en';
 
 const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
 ---
@@ -111,7 +111,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
       <p class="pkgs-intro">{packages.intro}</p>
     </SectionHeading>
     <div class="pkg-grid">
-      {packages.items.map((p) => <PackageCard {...p} cta={packages.cta} />)}
+      {packages.items.map((p) => <PackageCard {...p} cta={packages.cta} discount={commitDiscount} />)}
     </div>
     <a href="/packages" class="text-link compare">{packages.compareLink}<Icon name="arrow" /></a>
   </section>

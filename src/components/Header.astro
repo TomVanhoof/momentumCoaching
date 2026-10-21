@@ -70,6 +70,16 @@ import { en as t } from '../data/content.en';
 </script>
 
 <style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-ground);
+    border-bottom: 1px solid var(--color-line);
+    /* Keep an expanded mobile menu reachable on short screens */
+    max-height: 100dvh;
+    overflow-y: auto;
+  }
   .inner {
     display: flex;
     flex-wrap: wrap;
@@ -86,7 +96,7 @@ import { en as t } from '../data/content.en';
     text-decoration: none;
   }
   .brand :global(.logo) {
-    width: 165px;
+    width: 200px;
     height: auto;
   }
 
