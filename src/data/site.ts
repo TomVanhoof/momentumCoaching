@@ -6,15 +6,15 @@ export const site = {
   phone: { display: '0456 56 07 02', href: 'tel:+32456560702' },
   email: 'Coach.Fuai@gmail.com',
   // Set `url` once the Instagram handle is known; until then the line renders as plain text.
-  instagram: { handle: '[@instagram handle]', url: null as string | null },
+  instagram: { handle: '@coach.fuai', url: null as string | null },
   address: {
     venue: 'Basic-Fit Leuven',
     street: 'Bondgenotenlaan',
-    number: '[nr]',
+    number: '62',
     postalCode: '3000',
     city: 'Leuven',
   },
-  companyNumber: '[BE 0XXX.XXX.XXX]',
+  companyNumber: 'BE 1041.105.156',
   year: 2026,
   // Form backend. Endpoint and key come from env vars (see .env.example).
   form: {

@@ -52,7 +52,7 @@ export const en = {
     title: ['Training that fits ', { em: 'your' }, ' life, not the other way around.'] as Part[],
     paragraphs: [
       'I design programs that grow with you. Personalised training, practical nutrition guidance and sustainable habits, all tailored to help you move better, get stronger and feel your best.',
-      '[Your story in 2–3 sentences: how you got into training, who you love working with, and what a session with you feels like.]',
+      'I grew up practising gymnastics and martial arts, and movement has always been a big part of my life. Over time, my passion evolved into strength training and lifting, which inspired me to become a personal trainer and help others discover the benefits of exercise.',
     ],
     photoLabel: 'PHOTO:Fuai coaching a client, explaining technique',
     certsShown: 3, // how many certifications the home page lists (from `certifications` below)
@@ -62,28 +62,22 @@ export const en = {
   // Single source for certifications: add, remove or reorder freely. Used on / and /about.
   certifications: [
     {
-      name: '[Certification name]',
-      institution: '[Institution]',
-      year: '[Year]',
-      meaning: '[One line: what this lets you do for clients]',
+      name: 'NASM Certified Personal Trainer',
+      institution: 'National Academy of Sports Medicine',
+      year: '2026',
+      meaning: 'Ability to design evidence-based strength training programs for clients of all fitness levels.',
     },
     {
-      name: '[Certification name]',
-      institution: '[Institution]',
-      year: '[Year]',
-      meaning: '[One line: what this lets you do for clients]',
+      name: 'EREPS 4',
+      institution: 'European Register of Exercise Professionals',
+      year: '2026',
+      meaning: 'Ability to design evidence-based strength training programs for clients of all fitness levels.',
     },
     {
-      name: '[Certification name]',
-      institution: '[Institution]',
-      year: '[Year]',
-      meaning: '[One line: what this lets you do for clients]',
-    },
-    {
-      name: '[Certification name]',
-      institution: '[Institution]',
-      year: '[Year]',
-      meaning: '[One line: what this lets you do for clients]',
+      name: 'NASM - Certified Nutrition Coach',
+      institution: 'National Academy of Sports Medicine',
+      year: '2026',
+      meaning: 'Ability to provide evidence-based nutrition guidance for clients with various health goals.',
     },
   ],
 
@@ -122,9 +116,9 @@ export const en = {
       {
         name: '1-1 coaching',
         blurb:
-          'Learn how to move better, get stronger and reach your goals. Together, every session, at Basic-Fit Leuven.',
-        price: '[€ PRICE]',
-        unit: '/ [session or month]',
+          'Best for: beginners, people that need accountability or structure, want to improve technique, people that want full guidance.',
+        price: '€ 60',
+        unit: '/ session',
         features: [
           'Personal sessions at the gym',
           'Hands-on technique coaching',
@@ -135,8 +129,8 @@ export const en = {
       {
         name: 'Hybrid coaching',
         blurb:
-          'Mix 1-1 sessions, online coaching and independent training. I guide you through a personalised program and perfect your technique.',
-        price: '[€ PRICE]',
+          'A personalized monthly programme with 1-1 caoching in the first week to learn the program and perfect the technique, followed by three weeks of independent training.',
+        price: '€ 150',
         unit: '/ month',
         features: [
           '[X] 1-1 sessions per month',
@@ -149,7 +143,7 @@ export const en = {
       {
         name: 'Online coaching',
         blurb: 'Personalised training programs and ongoing support, wherever you want. Feedback whenever you ask for it.',
-        price: '[€ PRICE]',
+        price: '€ 90',
         unit: '/ month',
         features: [
           'Personalised training program',
@@ -157,6 +151,34 @@ export const en = {
           'Regular check-ins',
           'Practical nutrition guidance',
         ],
+      },
+    ],
+  },
+
+  faq: {
+    eyebrow: 'FAQ',
+    title: ['Questions? ', { em: 'Answers.', onDark: true }] as Part[],
+    intro: "Can't find what you're looking for? Get in touch and I'll happily help.",
+    items: [
+      {
+        q: 'Why should I get a PT?',
+        a: 'Anyone can give you a workout. I will give you a plan to progress. I will build you a programme tailored to your needs and goals.',
+      },
+      {
+        q: 'How many days a week do I need to work out?',
+        a: 'I believe that fitness should fit your life, and not the other way around. You let me know how much time you want to commit to working out and I will tailor your programme based on that.',
+      },
+      {
+        q: 'Do I need gym experience to work with a PT?',
+        a: 'Not at all! Whether you are completely new or you have been training for years, my coaching is tailored to your experience and goals.',
+      },
+      {
+        q: 'Can you help me with my nutrition?',
+        a: 'Yes, as a Certified Nutrition Coach I can educate you on healthy habits and the basics of macronutrients, give you practical guidance and help you stay accountable. Personalised meal plans are outside of my scope of practice and should be provided by a registered dietitian.',
+      },
+      {
+        q: 'How do I get started?',
+        a: "Get in touch to discuss your goals and what you're looking for. We will discuss which coaching option suits you best and then we will get started!",
       },
     ],
   },
@@ -182,14 +204,14 @@ export const en = {
   contact: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
     intro:
-      "Book a free intro, no strings attached. Tell me a little about your goals and I'll get back to you within [24 hours].",
+      "Book a free intro, no strings attached. Tell me a little about your goals and I'll get back to you within 24 hours.",
     form: {
       name: 'Name',
       namePlaceholder: 'Your name',
       email: 'Email',
       emailPlaceholder: 'you@example.com',
       goal: 'What would you like to work on?',
-      goals: ['Getting stronger', 'Losing weight', 'Moving better / mobility', 'More energy', 'Not sure yet'],
+      goals: ['Getting stronger', 'Losing weight', 'Moving better / mobility', 'Live healthier', 'Not sure yet'],
       package: 'Which package interests you?',
       packages: ['Help me choose', '1-1 coaching', 'Hybrid coaching', 'Online coaching'],
       message: 'Anything I should know?',
@@ -215,11 +237,11 @@ export const aboutPage = {
   heading: ["Hi, I'm ", { em: 'Fuai.' }] as Part[],
   lead: 'I help people of every age, shape and level feel at home in the gym and stronger outside of it.',
   story:
-    '[Your story, 3–5 sentences: how training changed things for you, why you became a coach, the kind of people you love working with, and what clients can expect from you.]',
+    'I grew up practising gymnastics and martial arts, and movement has always been a big part of my life. Over time, my passion evolved into strength training and lifting, which inspired me to become a personal trainer and help others discover the benefits of exercise. I love working with people who are ready to invest in their health, challenge themselves, and make lasting changes. As your coach, I’ll guide you every step of the way, helping you build strength, improve your fitness, and become more confident in what your body can do.',
   facts: [
-    { label: 'Where', value: 'Basic-Fit Leuven, Bondgenotenlaan' },
-    { label: 'Coaching since', value: '[Year]' },
-    { label: 'Languages', value: '[Nederlands · English · …]' },
+    { label: 'Where', value: 'Basic-Fit Leuven, Bondgenotenlaan 62' },
+    { label: 'Active in the gym since', value: '2018' },
+    { label: 'Languages', value: 'English, Nederlands, Español' },
     { label: 'Coaching', value: '1-1 · Hybrid · Online' },
   ],
   photoLabel: 'PHOTO:warm portrait of Fuai, looking into the camera',
@@ -270,8 +292,8 @@ export const packagesPage = {
     {
       name: '1-1 coaching',
       blurb:
-        'Learn how to move better, get stronger and reach your goals. Together we work towards a better you, every session.',
-      price: '[€ PRICE]',
+        'Best for: beginners, people that need accountability or structure, want to improve technique, people that want full guidance.',
+      price: '€ 60',
       unit: '/ session',
       terms: '[Session packs: 5 or 10 sessions at € …]',
       bestFor: 'beginners, anyone returning after a break, or people who want full guidance.',
@@ -287,8 +309,8 @@ export const packagesPage = {
     {
       name: 'Hybrid coaching',
       blurb:
-        'Mix 1-1 sessions, online coaching and independent training. I guide you through a personalised program and perfect your technique.',
-      price: '[€ PRICE]',
+        'A personalized monthly programme with 1-1 caoching in the first week to learn the program and perfect the technique, followed by three weeks of independent training.',
+      price: '€ 150',
       unit: '/ month',
       terms: '[Minimum term, e.g. 3 months]',
       bestFor: 'people who want regular check-ins in person, and the freedom to train on their own.',
@@ -305,7 +327,7 @@ export const packagesPage = {
     {
       name: 'Online coaching',
       blurb: 'Personalised training programs and ongoing support, wherever you want. Feedback whenever you ask for it.',
-      price: '[€ PRICE]',
+      price: '€ 90',
       unit: '/ month',
       terms: '[Monthly, cancel anytime?]',
       bestFor: 'people with some gym experience, busy schedules, or who train outside Leuven.',
@@ -325,12 +347,40 @@ export const packagesPage = {
     title: ['Compare at a ', { em: 'glance' }] as Part[],
     columns: ['1-1', 'Hybrid', 'Online'],
     rows: [
-      { label: 'Sessions together at the gym', values: ['Every session', '[X] per month', '—'] },
+      { label: 'Sessions together at the gym', values: ['Every session', '2 per month', '—'] },
       { label: 'Personalised program', values: ['Yes', 'Yes', 'Yes'] },
       { label: 'Technique feedback', values: ['In person', 'In person + video', 'Video'] },
       { label: 'Nutrition guidance', values: ['Yes', 'Yes', 'Yes'] },
       { label: 'Check-ins between sessions', values: ['[On request]', '[Weekly]', '[Weekly]'] },
-      { label: 'Price', values: ['[€ …] / session', '[€ …] / month', '[€ …] / month'], emphasis: true },
+      { label: 'Price', values: ['€ 60 / session', '€ 150 / month', '€ 90 / month'], emphasis: true },
+    ],
+  },
+
+  faq: {
+    eyebrow: 'FAQ',
+    title: ['Good to ', { em: 'know', onDark: true }] as Part[],
+    intro: 'Quick answers about the packages. Anything else? Just ask.',
+    items: [
+      {
+        q: 'Which package is right for me?',
+        a: "That depends on your goals, your experience and how much guidance you want. Not sure? That's exactly what the free intro is for: we talk it through and pick what fits.",
+      },
+      {
+        q: 'How long is a session?',
+        a: '[Session length: answer to be added]',
+      },
+      {
+        q: 'Is there a minimum term, and can I cancel?',
+        a: '[Minimum term and cancellation policy: answer to be added]',
+      },
+      {
+        q: 'Can I switch to another package later?',
+        a: '[Switching packages: answer to be added]',
+      },
+      {
+        q: 'Do I need a Basic-Fit membership?',
+        a: '[Basic-Fit membership: answer to be added]',
+      },
     ],
   },
 

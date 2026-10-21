@@ -7,12 +7,13 @@ import SectionHeading from '../components/SectionHeading.astro';
 import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
 import StepCard from '../components/StepCard.astro';
 import PackageCard from '../components/PackageCard.astro';
+import Faq from '../components/Faq.astro';
 import Testimonial from '../components/Testimonial.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { site, addressLine } from '../data/site';
 import { en as t } from '../data/content.en';
 
-const { hero, focus, coach, way, packages, testimonials, contact } = t;
+const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
 ---
 
 <BaseLayout
@@ -114,6 +115,9 @@ const { hero, focus, coach, way, packages, testimonials, contact } = t;
     </div>
     <a href="/packages" class="text-link compare">{packages.compareLink}<Icon name="arrow" /></a>
   </section>
+
+  <!-- FAQ (dark) -->
+  <Faq {...faq} />
 
   <!-- Testimonials (white band) -->
   <section class="band-white" aria-labelledby="clients-heading">

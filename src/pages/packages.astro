@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Parts from '../components/Parts.astro';
 import PackageCard from '../components/PackageCard.astro';
+import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { packagesPage as p } from '../data/content.en';
 ---
@@ -42,6 +43,8 @@ import { packagesPage as p } from '../data/content.en';
       </div>
     </div>
   </section>
+
+  <Faq {...p.faq} />
 
   <section class="container section start">
     <div class="start-head">
