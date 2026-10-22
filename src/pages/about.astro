@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Parts from '../components/Parts.astro';
-import PhotoPlaceholder from '../components/PhotoPlaceholder.astro';
+import { Image } from 'astro:assets';
+import trainerPhoto from '../assets/trainer.jpg';
 import CertificationCard from '../components/CertificationCard.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { en as t, aboutPage as p } from '../data/content.en';
@@ -23,7 +24,16 @@ import { en as t, aboutPage as p } from '../data/content.en';
         ))}
       </dl>
     </div>
-    <PhotoPlaceholder label={p.photoLabel} minHeight={680} />
+    <Image
+      src={trainerPhoto}
+      alt="Portrait of Fuai smiling at the camera"
+      width={1200}
+      height={1500}
+      widths={[600, 900, 1200]}
+      sizes="(max-width: 1000px) 100vw, 600px"
+      loading="eager"
+      class="portrait"
+    />
   </section>
 
   <section class="band-dark">
@@ -72,6 +82,14 @@ import { en as t, aboutPage as p } from '../data/content.en';
     gap: 56px;
     align-items: center;
     padding-block: 40px 96px;
+  }
+  .portrait {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 680px;
+    object-fit: cover;
+    object-position: 50% 20%;
+    border-radius: var(--radius-photo);
   }
   .intro-copy {
     display: flex;

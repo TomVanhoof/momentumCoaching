@@ -40,7 +40,7 @@ export const en = {
       "Personal coaching for every body. Whether you're new to the gym or chasing your next PR, I design programs that grow with you. Training, practical nutrition guidance and habits that actually stick.",
     primaryCta: 'Book an intro',
     secondaryCta: 'See packages',
-    trust: ['Certified personal trainer', '8 years of training experience', 'In person, hybrid & online'],
+    trust: ['Certified Personal Trainer', '8 years of training experience', 'In person, hybrid & online'],
     photoLabel:
       'PHOTO:Fuai, natural light, mid-movement or smiling at the gym (portrait, at least 1600 px tall)',
     certBadge: 'View my certifications',
@@ -56,9 +56,9 @@ export const en = {
   coach: {
     eyebrow: 'Meet your coach',
     title: ['Training that fits ', { em: 'your' }, ' life, not the other way around.'] as Part[],
-    paragraphs: [
-      'I design programs that grow with you. Personalised training, practical nutrition guidance and sustainable habits, all tailored to help you move better, get stronger and feel your best.',
+    paragraphs: [      
       'I grew up practising gymnastics and martial arts, and movement has always been a big part of my life. Over time, my passion evolved into strength training and lifting, which inspired me to become a personal trainer and help others discover the benefits of exercise.',
+      'I design programs that grow with you. Personalised training, practical nutrition guidance and sustainable habits, all tailored to help you move better, get stronger and feel your best.',
     ],
     photoLabel: 'PHOTO:Fuai coaching a client, explaining technique',
     certsShown: 3, // how many certifications the home page lists (from `certifications` below)
@@ -68,20 +68,20 @@ export const en = {
   // Single source for certifications: add, remove or reorder freely. Used on / and /about.
   certifications: [
     {
-      name: 'NASM Certified Personal Trainer',
-      institution: 'National Academy of Sports Medicine',
+      name: 'International Certified Personal Trainer',
+      institution: 'NASM (National Academy of Sports Medicine)',
       year: '2026',
       meaning: 'Ability to design evidence-based strength training programs for clients of all fitness levels.',
     },
     {
-      name: 'EREPS 4',
-      institution: 'European Register of Exercise Professionals',
+      name: 'Personal Trainer (EREPS 4) ',
+      institution: 'EREPS (European Register of Exercise Professionals)',
       year: '2026',
       meaning: 'Ability to design evidence-based strength training programs for clients of all fitness levels.',
     },
     {
-      name: 'NASM - Certified Nutrition Coach',
-      institution: 'National Academy of Sports Medicine',
+      name: 'Certified Nutrition Coach',
+      institution: 'NASM (National Academy of Sports Medicine)',
       year: '2026',
       meaning: 'Ability to provide evidence-based nutrition guidance for clients with various health goals.',
     },
@@ -93,8 +93,8 @@ export const en = {
     intro: 'No crash plans, no shouting. A clear, step-by-step approach that meets you where you are.',
     steps: [
       {
-        title: 'Free intro',
-        text: "A relaxed chat at the gym or online. We talk about your goals, your week and anything that's held you back before.",
+        title: 'Introduction',
+        text: "A relaxed chat at the gym or online. We talk about your profile, your goals and anything that's held you back before.",
       },
       {
         title: 'Assessment',
@@ -193,16 +193,16 @@ export const en = {
     title: ['What clients ', { em: 'say' }] as Part[],
     items: [
       {
-        quote: '[Client quote: one or two sentences about their result or how training with Fuai feels.]',
-        by: '[First name] · [Goal, e.g. first pull-up]',
+        quote: 'She paid a lot of attention to my technique and helped me improve my form.',
+        by: 'Jasmien · Get fitter',
       },
       {
-        quote: '[Client quote: one or two sentences about their result or how training with Fuai feels.]',
-        by: '[First name] · [Goal]',
+        quote: 'She has a lot of passion and that translates into her coaching. She is very motivating and makes you feel good about yourself.',
+        by: 'Jef · Move better',
       },
       {
-        quote: '[Client quote: one or two sentences about their result or how training with Fuai feels.]',
-        by: '[First name] · [Goal]',
+        quote: "She doesn't just give you a standard program, it gets completely tailored to you as a person.",
+        by: 'Tom · Gain muscle',
       },
     ],
   },
