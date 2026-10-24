@@ -2,27 +2,34 @@
    Source of truth for colours, type and radii. Import once in the base layout. */
 
 :root {
-  /* Core colours */
-  --color-ground: #F3F1EC;     /* page background (warm off-white) */
-  --color-surface: #FFFFFF;    /* cards, white bands */
-  --color-line: #DCD8CF;       /* borders, dividers */
-  --color-line-strong: #B9B5AC;/* form field borders */
-  --color-field: #FBFAF7;      /* form field background */
-  --color-petrol: #17323F;     /* dark sections, header button */
-  --color-petrol-card: #21404E;/* cards on top of petrol sections */
-  --color-ink: #15232B;        /* headings, text on accent */
-  --color-body: #3D4A50;       /* paragraphs on light */
-  --color-muted: #4F5B60;      /* labels, captions on light */
-  --color-on-dark: #FFFFFF;    /* headings on petrol */
-  --color-on-dark-body: #D5DEE2; /* paragraphs on petrol */
-  --color-on-dark-muted: #B9C8CE;/* labels on petrol */
+  /* Base */
+  --color-ground: #F2F2F2;     /* page background (light grey) */
+  --color-surface: #FDFEFF;    /* cards, white bands, form fields */
+  --color-line: #E4E4E8;       /* borders, dividers */
+  --color-line-strong: #C9C9CE;/* form field borders */
+  --color-field: #FDFEFF;      /* form field background */
 
-  /* Accent — Neon azure. Fill only on light backgrounds; text/icons OK on petrol.
-     Text ON the accent is always --color-ink (7.1:1). Never white text on it. */
-  --color-accent: #35B6FF;
+  /* Rhythm — graphite */
+  --color-graphite: #212121;      /* dark sections, headings */
+  --color-graphite-card: #2E2E2E; /* cards on graphite */
+  --color-ink: #212121;           /* headings, text on orange/lilac */
+  --color-body: #4A4A4F;          /* paragraphs on light */
+  --color-muted: #5A5A5F;         /* labels, captions on light */
+  --color-on-dark: #FDFEFF;       /* headings on graphite */
+  --color-on-dark-body: #BDBDC2;  /* paragraphs on graphite */
+  --color-on-dark-muted: #BDBDC2; /* labels on graphite */
+
+  /* Colour accents. Fills and shapes only; orange text/icons OK on graphite.
+     Text ON orange or lilac is always --color-ink. Never white. */
+  --color-energy: #FCCA82;     /* Sunset orange — action + highlight */
+  --color-energy-hover: #F7BD68;
+  --color-lilac: #D7D7F4;      /* personal, trust, certifications */
+
+  /* Signature gradient — lines, rings and frames only, never a fill behind text */
+  --gradient-signature: linear-gradient(100deg, #FCCA82 0%, #D7D7F4 50%);
 
   /* Placeholder imagery (remove once real photos exist) */
-  --placeholder-stripes: repeating-linear-gradient(135deg, #D9DFD9 0 16px, #E2E6E0 16px 32px);
+  --placeholder-stripes: repeating-linear-gradient(135deg, #E1E1E1 0 16px, #E8E8E8 16px 32px);
 
   /* Typography */
   --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif; /* headings, 600 */

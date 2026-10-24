@@ -43,6 +43,8 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
       </ul>
     </div>
 
+    <div class="hero-photo">
+      <span class="photo-shape" aria-hidden="true"></span>
     <PhotoPlaceholder label={hero.photoLabel} minHeight={640} labelWidth={280}>
       <a href="/about#certifications" class="cert-badge">
         <Icon name="award" />
@@ -58,6 +60,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
         </ul>
       </div>
     </PhotoPlaceholder>
+    </div>
   </section>
 
   <!-- Focus strip (dark) -->
@@ -107,6 +110,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
         <SectionHeading eyebrow={way.eyebrow} title={way.title} />
         <p class="way-intro">{way.intro}</p>
       </div>
+      <div class="journey-line" aria-hidden="true"></div>
       <ol class="steps">
         {way.steps.map((s, i) => (
           <StepCard number={String(i + 1).padStart(2, '0')} title={s.title} highlight={s.highlight}>{s.text}</StepCard>
@@ -130,7 +134,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   <Faq {...faq} />
 
   <!-- Testimonials (white band) -->
-  <section class="band-white" aria-labelledby="clients-heading">
+  <section class="band-lilac" aria-labelledby="clients-heading">
     <div class="container quotes">
       <h2 class="h2" id="clients-heading"><Parts parts={testimonials.title} /></h2>
       <div class="quote-grid">
@@ -194,7 +198,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     background: var(--color-surface);
     font-size: 14px;
     font-weight: 500;
-    color: #2c3a40;
+    color: var(--color-body);
   }
   .hero-title {
     display: flex;
@@ -204,7 +208,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   .greeting {
     font-size: 22px;
     font-weight: 500;
-    color: #2c3a40;
+    color: var(--color-body);
   }
   .greeting :global(.accent) {
     font-size: 30px;
@@ -236,6 +240,20 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     font-size: 14px;
     color: var(--color-muted);
   }
+  /* Gradient C: offset frame behind the hero photo */
+  .hero-photo {
+    position: relative;
+  }
+  .hero-photo > :global(.photo) {
+    position: relative;
+    height: 100%;
+  }
+  .photo-shape {
+    position: absolute;
+    inset: 16px -16px -16px 16px;
+    border-radius: var(--radius-photo);
+    background: linear-gradient(135deg, #FCCA82 0%, 40%, #D7D7F4 100%);
+  }
   .cert-badge {
     position: absolute;
     top: 20px;
@@ -246,8 +264,9 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     min-height: var(--tap-min);
     padding: 10px 16px;
     border-radius: var(--radius-pill);
-    background: var(--color-surface);
-    box-shadow: 0 6px 20px rgba(21, 35, 43, 0.1);
+    background: var(--color-lilac);
+    color: var(--color-ink);
+    box-shadow: 0 6px 20px rgba(33, 33, 33, 0.1);
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -290,8 +309,9 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   .modes li {
     padding: 6px 12px;
     border-radius: var(--radius-pill);
-    background: var(--color-petrol);
-    color: var(--color-on-dark);
+    border: 1px solid var(--color-line);
+    background: var(--color-ground);
+    color: var(--color-ink);
   }
 
   /* Focus strip */
@@ -304,10 +324,20 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     padding-block: 30px;
   }
   .focus-label {
-    color: var(--color-accent);
+    color: var(--color-energy);
   }
   :global(.band-dark) .focus-label {
-    color: var(--color-accent);
+    color: var(--color-energy);
+  }
+  .focus-items li + li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 40px;
+    border-radius: 50%;
+    background: var(--color-energy);
+    vertical-align: middle;
   }
   .focus-items {
     display: flex;
@@ -363,7 +393,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--color-accent);
+    background: var(--color-lilac);
     color: var(--color-ink);
   }
   .cert-text {
@@ -398,6 +428,13 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   .way-intro {
     max-width: 400px;
     color: var(--color-on-dark-body);
+  }
+  /* Gradient D: journey line above the steps */
+  .journey-line {
+    height: 4px;
+    margin-block: -24px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #FCCA82 0%, #D7D7F4 60%);
   }
   .steps {
     display: grid;
@@ -450,7 +487,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     gap: 48px;
     padding: clamp(28px, 5vw, 64px);
     border-radius: var(--radius-band);
-    background: var(--color-petrol);
+    background: var(--color-graphite);
     color: var(--color-on-dark);
   }
   .contact-copy {
@@ -490,5 +527,6 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   }
   .contact-list :global(svg) {
     flex: none;
+    color: var(--color-energy);
   }
 </style>

@@ -36,7 +36,7 @@ Placeholders are written in `[square brackets]` and stay visible until replaced.
 
 ## How to…
 
-**Change the accent colour.** Edit `--color-accent` in `src/styles/tokens.css`. Text on the accent stays ink; check the contrast before choosing a new colour. Also update the `#35B6FF` mentions in `design/` only if you still use those files.
+**Change the colours.** All colours live in `src/styles/tokens.css` ("Style B · Bright studio"): grey base `--color-ground`, white cards `--color-surface`, graphite `--color-graphite` / `--color-graphite-card`, sunset orange `--color-energy` (buttons, highlights, ticks), lilac `--color-lilac` (certifications, reviews) and `--gradient-signature`. Text on orange or lilac stays `--color-ink` (graphite), never white; never use orange or lilac as text on light backgrounds. The gradient is only for lines, rings and frames (hero photo frame, journey line, featured package strip), never a background behind text.
 
 **Add or remove a certification.** Edit the `certifications` array in `src/data/content.en.ts`. Each entry is `{ name, institution, year, meaning }`. The About page shows all of them; the home page shows the first `coach.certsShown` (default 3).
 
