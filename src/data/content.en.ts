@@ -26,6 +26,7 @@ export const en = {
     { label: 'Packages', href: '/packages' },
     { label: 'Contact', href: '/#contact' },
     { label: 'Privacy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
   ],
 
   hero: {
@@ -115,8 +116,8 @@ export const en = {
   packages: {
     eyebrow: 'Packages',
     title: ['How do you want to ', { em: 'train?' }] as Part[],
-    intro: "Three ways to work together. Not sure which one fits? We'll figure it out during your free intro.",
-    cta: 'Start with a free intro',
+    intro: "Three ways to work together. Not sure which one fits? We'll figure it out together during your intro.",
+    cta: 'Start with an intro',
     compareLink: 'Compare packages in detail',
     items: [
       {
@@ -281,19 +282,19 @@ export const aboutPage = {
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: 'Start with a free, no-pressure intro at the gym or online.',
-    button: 'Book a free intro',
+    text: 'Start with a no-pressure intro at the gym or online.',
+    button: 'Book an intro',
   },
 };
 
 export const packagesPage = {
   title: 'Personal training packages Leuven: 1-1, hybrid & online | Coach Fuai',
   description:
-    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package starts with a free intro and a plan made just for you.',
+    'Compare 1-1, hybrid and online personal training with Coach Fuai in Leuven. Every package starts with an intro and a plan made just for you.',
   eyebrow: 'Packages',
   heading: ['Coaching that fits ', { em: 'your week' }] as Part[],
   intro:
-    'Train side by side, mix it up, or train on your own with my guidance. Every package starts with a free intro and a plan made just for you.',
+    'Train side by side, mix it up, or train on your own with my guidance. Every package starts with an intro and a plan made just for you.',
   items: [
     {
       name: '1-1 coaching',
@@ -301,11 +302,11 @@ export const packagesPage = {
         'Learn how to move better, get stronger and reach your goals. Together we work towards a better you, every session.',
       price: '€ 60',
       unit: '/ session',
-      terms: '[Session packs: 5 or 10 sessions at € …]',
-      bestFor: 'beginners, people that need accountability or structure, want to improvetechnique, people that want full guidance.',
+      terms: 'Minimum contract of one month.',
+      bestFor: 'beginners, people that need accountability or structure, want to improve technique, people that want full guidance.',
       photoLabel: 'PHOTO:1-1 session on the gym floor',
       features: [
-        '[60]-minute sessions at Basic-Fit Leuven',
+        '60-minute sessions at Basic-Fit Leuven',
         'Hands-on technique coaching',
         'Personalised program',
         'Practical nutrition guidance',
@@ -318,11 +319,11 @@ export const packagesPage = {
         'Mix 1-1 sessions, online coaching and independent training. I guide you through a personalised program and perfect your technique.',
       price: '€ 150',
       unit: '/ month',
-      terms: '[Minimum term, e.g. 3 months]',
+      terms: 'Minimum contract of one month.',
       bestFor: 'people who want regular check-ins in person, and the freedom to train on their own.',
       photoLabel: 'PHOTO:client training solo, phone with program',
       features: [
-        '[X] 1-1 sessions per month',
+        '2 in person 1-1 sessions per month',
         'Program for your solo workouts',
         'Online check-ins & video feedback',
         'Practical nutrition guidance',
@@ -335,13 +336,13 @@ export const packagesPage = {
       blurb: 'Personalised training programs and ongoing support, wherever you want. Feedback whenever you ask for it.',
       price: '€ 90',
       unit: '/ month',
-      terms: '[Monthly, cancel anytime?]',
+      terms: 'Minimum contract of 3 months.',
       bestFor: 'people with some gym experience, busy schedules, or who train outside Leuven.',
       photoLabel: 'PHOTO:Fuai on a video check-in',
       features: [
         'Personalised training program',
         'Video feedback on your technique',
-        '[Weekly] check-ins',
+        'Weekly check-ins',
         'Practical nutrition guidance',
       ],
       cta: 'Choose online coaching',
@@ -357,7 +358,7 @@ export const packagesPage = {
       { label: 'Personalised program', values: ['Yes', 'Yes', 'Yes'] },
       { label: 'Technique feedback', values: ['In person', 'In person + video', 'Video'] },
       { label: 'Nutrition guidance', values: ['Yes', 'Yes', 'Yes'] },
-      { label: 'Check-ins between sessions', values: ['[On request]', '[Weekly]', '[Weekly]'] },
+      { label: 'Check-ins between sessions', values: ['On request', 'Weekly', 'Weekly'] },
       { label: 'Price', values: ['€ 60 / session', '€ 150 / month', '€ 90 / month'], emphasis: true },
     ],
   },
@@ -369,7 +370,7 @@ export const packagesPage = {
     items: [
       {
         q: 'Which package is right for me?',
-        a: "That depends on your goals, your experience and how much guidance you want. Not sure? That's exactly what the free intro is for: we talk it through and pick what fits.",
+        a: "That depends on your goals, your experience and how much guidance you want. Not sure? That's exactly what the intro is for: we talk it through and pick what fits.",
       },
       {
         q: 'How long is a session?',
@@ -394,7 +395,7 @@ export const packagesPage = {
     eyebrow: 'Getting started',
     title: ['Three steps to your ', { em: 'first session' }] as Part[],
     items: [
-      { title: 'Book a free intro', text: "Send a message or call. We'll find a moment to meet at the gym or online." },
+      { title: 'Book an intro', text: "Send a message or call. We'll find a moment to meet at the gym or online." },
       { title: 'Pick what fits', text: 'We choose the package that matches your goals, budget and schedule together.' },
       { title: 'Start moving', text: 'Your assessment and first session, then your personal program is ready to go.' },
     ],
@@ -402,8 +403,8 @@ export const packagesPage = {
 
   cta: {
     title: ["Let's build your ", { em: 'momentum.', onDark: true }] as Part[],
-    text: "Not sure which package suits you? That's exactly what the free intro is for.",
-    button: 'Book a free intro',
+    text: "Not sure which package suits you? That's exactly what the intro is for.",
+    button: 'Book an intro',
   },
 };
 
@@ -412,33 +413,100 @@ export const privacyPage = {
   description: 'How Momentum Coaching handles your personal data.',
   eyebrow: 'Legal',
   heading: ['Privacy ', { em: 'policy' }] as Part[],
-  updated: 'Last updated: [date]',
+  updated: 'Last updated: October 2026',
   sections: [
     {
       title: 'Who is responsible',
-      text: '[Placeholder:Momentum Coaching, Basic-Fit Leuven, Bondgenotenlaan [nr], 3000 Leuven. Ondernemingsnummer [BE 0XXX.XXX.XXX]. Contact: Coach.Fuai@gmail.com.]',
+      text: 'Momentum Coaching (Coach Fuai), Basic-Fit Leuven, Bondgenotenlaan 62, 3000 Leuven. Company number BE 1041.105.156. Contact: Coach.Fuai@gmail.com or 0456 56 07 02.',
     },
     {
       title: 'What data I collect',
-      text: '[Placeholder:the details you enter in the contact form (name, email, goal, package, message) and anything you share when you contact me directly.]',
+      text: 'The details you enter in the contact form (name, email, goal, package, message) and anything you share when you contact me directly by email, phone or Instagram.',
     },
     {
       title: 'Why and for how long',
-      text: '[Placeholder:to reply to your request and arrange your free intro. Retention period: [X months].]',
+      text: 'To reply to your request and arrange your intro, and, if you become a client, to deliver and invoice the coaching. Requests that do not lead to coaching are kept for [X months] and then deleted. Invoicing data is kept as long as Belgian accounting law requires.',
     },
     {
       title: 'Who receives it',
-      text: '[Placeholder:the form provider that delivers your message to me ([provider name]), and hosting provider Cloudflare.]',
+      text: 'The form provider that delivers your message to me ([provider name, e.g. Web3Forms]), and hosting provider Cloudflare. I do not sell your data or use it for advertising.',
     },
     {
       title: 'Cookies and tracking',
-      text: '[Placeholder:this site uses no tracking cookies or third-party fonts. Update if analytics is added.]',
+      text: 'This site uses no tracking cookies, no analytics and no third-party fonts.',
     },
     {
       title: 'Your rights',
-      text: '[Placeholder:access, correction, deletion, objection; contact me by email, or lodge a complaint with the Belgian Data Protection Authority.]',
+      text: 'You can ask for access to, correction or deletion of your data, or object to its use, by emailing Coach.Fuai@gmail.com. You can also lodge a complaint with the Belgian Data Protection Authority (gegevensbeschermingsautoriteit.be).',
     },
   ],
+};
+
+export const termsPage = {
+  title: 'Terms and conditions | Coach Fuai · Momentum Coaching',
+  description: 'The terms and conditions that apply to Momentum Coaching services and goods.',
+  eyebrow: 'Legal',
+  heading: ['Terms and ', { em: 'conditions' }] as Part[],
+  sections: [
+    {
+      title: 'Scope',
+      paragraphs: [
+        'These Terms and Conditions apply to both services and goods.',
+        'By completing the order form or placing an order, the customer accepts these Terms and Conditions.',
+      ],
+    },
+    {
+      title: 'Invoicing',
+      paragraphs: [
+        'For business customers with a Belgian VAT number, invoices are sent by default electronically via the Peppol network, in accordance with Belgian legislation. Such customer shall ensure an active Peppol registration. All other customers receive their invoice by e-mail or by post, unless otherwise agreed. An invoice sent via Peppol is deemed received on the date of dispatch.',
+        'Although the Peppol network increases security, the customer must verify the data on the invoice themselves before payment. The supplier is not liable for damages resulting from fraud or technical errors at the Peppol access points of the customer or third parties.',
+      ],
+    },
+    {
+      title: 'Late payment',
+      paragraphs: [
+        'In the event of total or partial non-payment by the customer within 14 calendar days (+ three working days if not by electronic means) after sending the first payment reminder, compensation shall automatically and without formal notice be due, amounting to:',
+      ],
+      list: [
+        '€20 if the amount due is less than or equal to €150;',
+        '€30 plus 10% of the amount due above €150;',
+        '€65 plus 5% of the amount due above €500, with a total limit of €2.000.',
+      ],
+      after: [
+        'In the event of total or partial non-payment by the customer within 14 calendar days (+ three working days if not by electronic means) of the sending of the first payment reminder, the customer shall automatically and without formal notice be liable for interest at the legal rate for late payment in commercial transactions, in accordance with article 5, paragraph 2 of the Law of August 2, 2002 on combating late payment in commercial transactions. This interest shall be calculated on the sum still to be paid.',
+      ],
+    },
+    {
+      title: 'Disputes about invoices',
+      paragraphs: [
+        'The customer shall check the invoice immediately. Any dispute must be made in writing and with reasons within 8 calendar days of the invoice date. After this period, the invoice and the delivery shall be considered definitively accepted.',
+      ],
+    },
+    {
+      title: 'Ownership and risk',
+      paragraphs: [
+        'As long as goods and services delivered have not been paid for in full, they remain the property of the supplier. Nevertheless, all risks are transferred to the purchaser from the moment of delivery.',
+      ],
+    },
+    {
+      title: 'Subscriptions',
+      paragraphs: [
+        'Subscriptions are renewed automatically, unless the subscription is terminated in writing on time, being at least one (1) month before the expiry of the term.',
+      ],
+    },
+    {
+      title: 'Non-performance',
+      paragraphs: [
+        'If the customer fails to meet his obligations on time, including his payment obligation, we are entitled to stop further deliveries and services and to consider the agreement terminated by law and without formal notice.',
+      ],
+    },
+    {
+      title: 'Jurisdiction',
+      paragraphs: [
+        'In the event of a dispute, only the authorized courts of the jurisdiction shall have jurisdiction.',
+      ],
+    },
+  ] as { title: string; paragraphs: string[]; list?: string[]; after?: string[] }[],
 };
 
 export const notFoundPage = {
@@ -449,6 +517,36 @@ export const notFoundPage = {
   text: "We couldn't find what you were looking for. Head back home or see the packages.",
   home: 'Back to home',
   packages: 'See packages',
+};
+
+// Small strings that used to be hard-coded in components and pages.
+export const ui = {
+  skip: 'Skip to content',
+  menu: 'Menu',
+  mainNav: 'Main',
+  footerNav: 'Footer',
+  language: 'Language',
+  focusAria: 'Focus areas',
+  photosOf: 'Photos of Fuai',
+  prevPhoto: 'Previous photo',
+  nextPhoto: 'Next photo',
+  feature: 'Feature',
+  honeypot: 'Leave this empty',
+  formSubject: 'New request — Momentum Coaching',
+  jobTitle: 'Personal trainer',
+  businessDescription: 'Personal trainer in Leuven offering 1-1, hybrid and online coaching.',
+  alt: {
+    hero: 'Fuai smiling in the gym, leaning on a squat rack',
+    coach1: 'Fuai doing an incline dumbbell press',
+    coach2: 'Fuai training on the cable machine',
+    aboutPortrait: 'Portrait of Fuai smiling at the camera',
+    aboutTrail: 'Fuai crouching on a pile of logs in the forest, pointing at the camera next to a golden retriever',
+  },
+  home: {
+    title: 'Personal trainer Leuven — Coach Fuai · Momentum Coaching',
+    description:
+      'Personal trainer in Leuven at Basic-Fit Bondgenotenlaan. 1-1, hybrid and online coaching to help you move better, get stronger and feel amazing.',
+  },
 };
 
 export type Content = typeof en;

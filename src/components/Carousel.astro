@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Icon from './Icon.astro';
+import { getContent, type Lang } from '../i18n';
 
 interface Slide {
   src: ImageMetadata;
@@ -20,8 +21,10 @@ interface Props {
   maxHeight?: number;
   /** Load the first slide eagerly (above the fold) */
   eager?: boolean;
+  lang?: Lang;
 }
-const { slides, label, width, height, sizes, aspect = '4 / 5', maxHeight, eager = false } = Astro.props;
+const { slides, label, width, height, sizes, aspect = '4 / 5', maxHeight, eager = false, lang = 'en' } = Astro.props;
+const { ui } = getContent(lang);
 const frame = `--aspect: ${aspect};${maxHeight ? ` --max-h: ${maxHeight}px;` : ''}`;
 ---
 
@@ -37,15 +40,16 @@ const frame = `--aspect: ${aspect};${maxHeight ? ` --max-h: ${maxHeight}px;` : '
           widths={[Math.round(width / 2), Math.round(width * 0.8), width]}
           sizes={sizes}
           loading={eager && i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={eager && i === 0 ? 'high' : undefined}
           style={s.position ? `object-position: ${s.position}` : undefined}
         />
       </div>
     ))}
   </div>
-  <button type="button" class="nav prev" data-prev aria-label="Previous photo">
+  <button type="button" class="nav prev" data-prev aria-label={ui.prevPhoto}>
     <span class="flip"><Icon name="arrow" size={20} /></span>
   </button>
-  <button type="button" class="nav next" data-next aria-label="Next photo">
+  <button type="button" class="nav next" data-next aria-label={ui.nextPhoto}>
     <Icon name="arrow" size={20} />
   </button>
   <div class="dots" aria-hidden="true">

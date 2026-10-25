@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Parts from '../components/Parts.astro';
+import { getContent, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const { privacy: p } = getContent(lang);
+---
+
+<BaseLayout title={p.title} description={p.description} {lang}>
+  <article class="container page">
+    <header>
+      <span class="label">{p.eyebrow}</span>
+      <h1><Parts parts={p.heading} /></h1>
+      <p class="updated">{p.updated}</p>
+    </header>
+    {p.sections.map((s) => (
+      <section>
+        <h2>{s.title}</h2>
+        <p>{s.text}</p>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 800px;
+    padding-block: 56px var(--section-y);
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(46px, 5.6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .updated {
+    font-size: var(--text-small);
+    color: var(--color-muted);
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-line);
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+  }
+  section p {
+    color: var(--color-body);
+  }
+</style>

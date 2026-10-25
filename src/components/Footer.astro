@@ -1,16 +1,22 @@
 ---
 import Logo from './Logo.astro';
 import { site } from '../data/site';
-import { en as t } from '../data/content.en';
+import { getContent, localizeHref, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const { t, ui } = getContent(lang);
 ---
 
 <footer>
   <div class="container inner">
-    <a href="/" class="brand" aria-label={`${site.name} · ${site.company}`}>
+    <a href={localizeHref(lang, '/')} class="brand" aria-label={`${site.name} · ${site.company}`}>
       <Logo />
     </a>
-    <nav aria-label="Footer">
-      {t.footerNav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <nav aria-label={ui.footerNav}>
+      {t.footerNav.map((item) => <a href={localizeHref(lang, item.href)}>{item.label}</a>)}
     </nav>
     <p>© {site.year} {t.footer.copyright} · {t.footer.companyNumberLabel} {site.companyNumber}</p>
   </div>

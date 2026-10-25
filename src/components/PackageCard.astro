@@ -1,6 +1,10 @@
 ---
 import Icon from './Icon.astro';
 import PhotoPlaceholder from './PhotoPlaceholder.astro';
+import { localizeHref, type Lang } from '../i18n';
+// Photos are hidden until there is material for them; set to true to show them again
+const SHOW_PHOTO = false;
+
 interface Props {
   name: string;
   blurb: string;
@@ -19,6 +23,7 @@ interface Props {
   terms?: string;
   /** Commitment discount, shown as a quiet line under the price */
   discount?: { percent: number; text: string };
+  lang?: Lang;
 }
 const {
   name,
@@ -28,14 +33,16 @@ const {
   features,
   cta,
   featured = false,
-  href = '/#contact',
+  href: hrefProp = '/#contact',
   level: Heading = 'h3',
   photoLabel,
   bestFor,
   bestForLabel = 'Best for:',
   terms,
   discount,
+  lang = 'en',
 } = Astro.props;
+const href = localizeHref(lang, hrefProp);
 const detailed = Boolean(photoLabel || bestFor || terms);
 // Rows the card spans in the parent grid (see subgrid in styles): top, price, features, button + optional photo / best-for
 // '€ 150' -> '€ 120' (assumes a leading currency symbol followed by the amount)
@@ -47,11 +54,11 @@ const discounted = (() => {
   const value = (Number(amount.replace(',', '.')) * (100 - discount.percent)) / 100;
   return `${symbol}${Number.isInteger(value) ? value : value.toFixed(2)}${rest}`;
 })();
-const rows = 4 + Number(Boolean(photoLabel)) + Number(Boolean(bestFor));
+const rows = 4 + Number(SHOW_PHOTO && Boolean(photoLabel)) + Number(Boolean(bestFor));
 ---
 
 <article class:list={['card', { featured, detailed }]} style={`--rows:${rows}`}>
-  {photoLabel && <PhotoPlaceholder label={photoLabel} minHeight={180} labelWidth={240} variant={featured ? 'dark' : 'light'} small />}
+  {SHOW_PHOTO && photoLabel && <PhotoPlaceholder label={photoLabel} minHeight={180} labelWidth={240} variant={featured ? 'dark' : 'light'} small />}
   <div class="top">
     <Heading>{name}</Heading>
     <p class="blurb">{blurb}</p>

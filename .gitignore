@@ -4,3 +4,15 @@ dist/
 .env
 .env.*
 !.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+# Not used by the site build
+Pictures/
+momentum-coaching-handoff/
+.claude/

@@ -8,16 +8,20 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-import { site, addressLine } from '../data/site';
+import { site } from '../data/site';
+import { cleanPath, getContent, pathForLang, type Lang } from '../i18n';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  lang?: Lang;
 }
-const { title, description, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title, description, noindex = false, lang = 'en' } = Astro.props;
+const { ui } = getContent(lang);
+const canonical = new URL(cleanPath(Astro.url.pathname), Astro.site);
 const origin = new URL('/', Astro.site).href;
+const alternates = (['en', 'nl'] as const).map((l) => ({ lang: l, href: new URL(pathForLang(Astro.url.pathname, l), Astro.site) }));
 
 // Leave the street number out of structured data until it is confirmed
 const streetAddress = site.address.number.startsWith('[')
@@ -31,7 +35,7 @@ const jsonLd = {
       '@type': 'Person',
       '@id': `${origin}#fuai`,
       name: 'Fuai',
-      jobTitle: 'Personal trainer',
+      jobTitle: ui.jobTitle,
       email: site.email,
       telephone: '+32456560702',
       worksFor: { '@id': `${origin}#business` },
@@ -40,7 +44,7 @@ const jsonLd = {
       '@type': 'LocalBusiness',
       '@id': `${origin}#business`,
       name: `${site.company} — ${site.name}`,
-      description: 'Personal trainer in Leuven offering 1-1, hybrid and online coaching.',
+      description: ui.businessDescription,
       url: origin,
       email: site.email,
       telephone: '+32456560702',
@@ -59,14 +63,17 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={alternates[0].href} />}
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'nl' ? 'nl_BE' : 'en_GB'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -76,11 +83,11 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <a href="#main" class="skip-link">Skip to content</a>
-    <Header />
+    <a href="#main" class="skip-link">{ui.skip}</a>
+    <Header lang={lang} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

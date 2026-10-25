@@ -2,13 +2,16 @@
 import Button from './Button.astro';
 import Parts from './Parts.astro';
 import type { Part } from '../data/content.en';
+import { localizeHref, type Lang } from '../i18n';
 interface Props {
   title: Part[];
   text: string;
   button: string;
   href?: string;
+  lang?: Lang;
 }
-const { title, text, button, href = '/#contact' } = Astro.props;
+const { title, text, button, href: hrefProp = '/#contact', lang = 'en' } = Astro.props;
+const href = localizeHref(lang, hrefProp);
 ---
 
 <div class="band">

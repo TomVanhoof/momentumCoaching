@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Parts from '../components/Parts.astro';
+import Carousel from '../components/Carousel.astro';
+import trainerPhoto from '../assets/trainer.jpg';
+import trailPhoto from '../assets/about-trail.jpg';
+import CertificationCard from '../components/CertificationCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getContent, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const { t, ui, about: p } = getContent(lang);
+---
+
+<BaseLayout title={p.title} description={p.description} {lang}>
+  <section class="container intro">
+    <div class="intro-copy">
+      <span class="label">{p.eyebrow}</span>
+      <h1><Parts parts={p.heading} /></h1>
+      <p class="lead">{p.lead}</p>
+      <p class="story">{p.story}</p>
+      <dl class="facts">
+        {p.facts.map((f) => (
+          <div>
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <Carousel
+      label={ui.photosOf}
+      {lang}
+      slides={[
+        { src: trainerPhoto, alt: ui.alt.aboutPortrait, position: '50% 20%' },
+        { src: trailPhoto, alt: ui.alt.aboutTrail, position: '50% 55%' },
+      ]}
+      width={1200}
+      height={1500}
+      sizes="(max-width: 1000px) 100vw, 600px"
+      maxHeight={680}
+      eager
+    />
+  </section>
+
+  <section class="band-dark">
+    <div class="container stand">
+      <div class="stand-head">
+        <span class="label stand-label">{p.stand.eyebrow}</span>
+        <h2 class="h2">{p.stand.title}</h2>
+      </div>
+      <ul class="pillars">
+        {p.stand.pillars.map((pillar) => (
+          <li>
+            <h3><Parts parts={pillar.title} /></h3>
+            <p>{pillar.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="certifications" class="container section certs">
+    <div class="certs-head">
+      <div class="certs-title">
+        <span class="label">{p.certs.eyebrow}</span>
+        <h2 class="h2"><Parts parts={p.certs.title} /></h2>
+      </div>
+      <p class="certs-intro">{p.certs.intro}</p>
+    </div>
+    <ul class="cert-grid">
+      {t.certifications.map((c) => <CertificationCard {...c} />)}
+    </ul>
+    <p class="studying">
+      <strong>{p.certs.studyingLabel}</strong>
+      <span>{p.certs.studying}</span>
+    </p>
+  </section>
+
+  <section class="container cta">
+    <CtaBand {...p.cta} {lang} />
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+    gap: 56px;
+    align-items: center;
+    padding-block: 40px 96px;
+  }
+  .intro-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    align-items: flex-start;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(50px, 6vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+  .lead {
+    max-width: 540px;
+    font-size: 21px;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+  .story {
+    max-width: 540px;
+    font-size: 18px;
+    color: var(--color-body);
+    text-wrap: pretty;
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 0 32px;
+    width: 100%;
+    max-width: 540px;
+    margin: 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .facts div {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  dt {
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+  dd {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .stand {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-block: 104px;
+  }
+  .stand-head {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 640px;
+  }
+  .stand-label {
+    color: var(--color-energy);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 20px;
+  }
+  .pillars li {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 32px;
+    border-radius: var(--radius-card);
+    background: var(--color-graphite-card);
+  }
+  .pillars h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 30px;
+  }
+  .pillars p {
+    font-size: 16px;
+    color: var(--color-on-dark-body);
+  }
+
+  .certs {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .certs-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .certs-title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 640px;
+  }
+  .certs-intro {
+    max-width: 420px;
+    color: var(--color-body);
+  }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+    gap: 20px;
+  }
+  .studying {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-radius: 18px;
+    background: var(--color-lilac);
+    color: var(--color-ink);
+  }
+  .studying strong {
+    color: var(--color-ink);
+  }
+
+  .cta {
+    padding-bottom: var(--section-y);
+  }
+
+  @media (max-width: 600px) {
+    .stand {
+      padding-block: 64px;
+    }
+  }
+</style>
