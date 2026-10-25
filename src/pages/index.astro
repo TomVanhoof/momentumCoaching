@@ -1,8 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import coachPhoto from '../assets/coach.jpg';
+import coachPhoto from '../assets/meet-coach.jpg';
+import heroPhoto from '../assets/hero.jpg';
+import heroMainPhoto from '../assets/hero-main.jpg';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import Carousel from '../components/Carousel.astro';
 import Icon from '../components/Icon.astro';
 import Parts from '../components/Parts.astro';
 import SectionHeading from '../components/SectionHeading.astro';
@@ -45,7 +48,17 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
 
     <div class="hero-photo">
       <span class="photo-shape" aria-hidden="true"></span>
-    <PhotoPlaceholder label={hero.photoLabel} minHeight={640} labelWidth={280}>
+    <div class="photo">
+      <Image
+        src={heroMainPhoto}
+        alt="Fuai smiling in the gym, leaning on a squat rack"
+        width={1000}
+        height={1288}
+        widths={[500, 800, 1000]}
+        sizes="(max-width: 1000px) 100vw, 560px"
+        class="hero-img"
+        loading="eager"
+      />
       <a href="/about#certifications" class="cert-badge">
         <Icon name="award" />
         {hero.certBadge}
@@ -59,7 +72,7 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
           {hero.modes.map((m) => <li>{m}</li>)}
         </ul>
       </div>
-    </PhotoPlaceholder>
+    </div>
     </div>
   </section>
 
@@ -75,14 +88,16 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
 
   <!-- Meet your coach -->
   <section id="about" class="container section coach">
-    <Image
-      src={coachPhoto}
-      alt="Fuai looking into the camera"
+    <Carousel
+      label="Photos of Fuai"
+      slides={[
+        { src: coachPhoto, alt: 'Fuai doing an incline dumbbell press' },
+        { src: heroPhoto, alt: 'Fuai training on the cable machine' },
+      ]}
       width={1000}
       height={1250}
-      widths={[500, 800, 1000]}
       sizes="(max-width: 1000px) 100vw, 560px"
-      class="coach-photo"
+      maxHeight={560}
     />
     <div class="coach-copy">
       <span class="label">{coach.eyebrow}</span>
@@ -244,9 +259,25 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
   .hero-photo {
     position: relative;
   }
-  .hero-photo > :global(.photo) {
+  .hero-photo > .photo {
     position: relative;
     height: 100%;
+    min-height: 640px;
+    overflow: hidden;
+    border-radius: var(--radius-photo);
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+  @media (max-width: 600px) {
+    .hero-photo > .photo {
+      min-height: 420px;
+    }
   }
   .photo-shape {
     position: absolute;
@@ -354,14 +385,6 @@ const { hero, focus, coach, way, packages, faq, testimonials, contact } = t;
     grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr));
     gap: 64px;
     align-items: center;
-  }
-  .coach-photo {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    max-height: 560px;
-    object-fit: cover;
-    object-position: 50% 45%;
-    border-radius: var(--radius-photo);
   }
   .coach-copy {
     display: flex;
