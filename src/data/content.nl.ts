@@ -233,6 +233,7 @@ export const en: Content = {
   footer: {
     copyright: 'Momentum Coaching',
     companyNumberLabel: 'Ondernemingsnr.',
+    madeBy: 'Gemaakt door',
   },
 };
 

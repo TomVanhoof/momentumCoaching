@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import elvateLogo from '../assets/elvate black.svg';
 import { site } from '../data/site';
 import { getContent, localizeHref, type Lang } from '../i18n';
 
@@ -19,6 +20,10 @@ const { t, ui } = getContent(lang);
       {t.footerNav.map((item) => <a href={localizeHref(lang, item.href)}>{item.label}</a>)}
     </nav>
     <p>© {site.year} {t.footer.copyright} · {t.footer.companyNumberLabel} {site.companyNumber}</p>
+    <a class="credit" href="https://elvate.be/" target="_blank" rel="noopener">
+      <span>{t.footer.madeBy}</span>
+      <img src={elvateLogo.src} alt="Elvate" height="14" />
+    </a>
   </div>
 </footer>
 
@@ -46,6 +51,20 @@ const { t, ui } = getContent(lang);
   }
   .brand :global(svg) {
     width: 200px;
+  }
+  .credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: var(--tap-min);
+    flex-basis: 100%;
+    justify-content: center;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+  .credit img {
+    height: 14px;
+    width: auto;
   }
   nav {
     display: flex;
